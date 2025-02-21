@@ -1,23 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500;600;700&family=Encode+Sans+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Hind+Vadodara:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inika:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Serif+Gujarati:wght@100..900&display=swap');
+
 @import "tailwindcss";
 
-@font-face {
-  font-family: "amazon-ember";
-  src: url('./assets/fonts/AmazonEmber_Rg.ttf');
-  font-weight: normal;
+
+@theme {
+  /* ========== Typography ========== */
+  --font-lato: "Lato", serif;
+  --font-ibm-plex-sans: "IBM Plex Sans", serif;
+  --font-inika: "Inika", serif;
+  --font-hind-vadodara: "Hind Vadodara", serif;
+  --font-inter: "Inter", serif;
+  --font-cabin-condensed: "Cabin Condensed", serif;
+  --font-noto-serif-gujarati: "Noto Serif Gujarati", serif;
+  --font-ibm-plex-sans-condensed: "IBM Plex Sans Condensed", serif;
+  --font-encode-sans-semi-condensed: "Encode Sans Semi Condensed", serif;
+  /* ========== Colors ========== */
+  /* Main */
+  --color-primary-dark: #131921;
+  --color-secondary-dark: #232F3E;
+  --color-primary-white: #ffffff;
+  --color-primary-black: #000000;
+  /* Gray */
+  --color-gray-950: #131A22;
+  --color-gray-900: #37475A;
+  --color-gray-800: #565959;
+  --color-gray-700: #5C5C5C;
+  --color-gray-600: #717171;
+  --color-gray-500: #787878;
+  --color-gray-400: #7F7F7F;
+  --color-gray-300: #999999;
+  --color-gray-200: #B4B4B4;
+  --color-gray-100: #D9D9D9;
+  /* Orange & Yellow */
+  --color-orange-dark: #DE7921;
+  --color-orange: #FF9900;
+  --color-orange-light: #FFD814;
+  --color-yellow: #FFCC00;
+  /* Blue */
+  --color-blue-dark: #1F8394;
+  --color-blue: #2A8FD7;
+  /* Status Colors */
+  --color-red: #B12704;
+  --color-green: #71ED58;
 }
 
-@font-face {
-  font-family: "amazon-ember";
-  src: url('./assets/fonts/Amazon-Ember-Medium.ttf');
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: "amazon-ember";
-  src: url('./assets/fonts/AmazonEmber_Bd.ttf');
-  font-weight: bold;
-}
-
-body {
-  font-family: 'amazon-ember';
+input[type="radio"]
+{
+  width: 20px;
+  height: 20px;
+  accent-color: var(--color-gray-500);
 }
