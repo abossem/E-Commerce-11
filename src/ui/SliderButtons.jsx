@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from "lucide-react"; // أيقونات من Lucide أو ممكن تستخدم أي مكتبة
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useSwiper } from "swiper/react";
 
 const SliderButtons = ({ direction = "next", className = "" }) => {
@@ -10,7 +10,10 @@ const SliderButtons = ({ direction = "next", className = "" }) => {
   };
 
   return (
-    <button onClick={handleClick} className={`p-2 cursor-pointer ${className}`}>
+    <button
+      onClick={handleClick}
+      className={`p-2 max-sm:hidden cursor-pointer rounded-sm ${className}`}
+    >
       {direction === "next" ? (
         <ChevronRight size={30} />
       ) : (
