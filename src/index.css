@@ -1,7 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500;600;700&family=Encode+Sans+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Hind+Vadodara:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inika:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Serif+Gujarati:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cabin+Condensed:wght@400;500;600;700&family=Encode+Sans+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Hind+Vadodara:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Inika:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Serif+Gujarati:wght@100..900&display=swap");
 
 @import "tailwindcss";
 
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
 @theme {
   /* ========== Typography ========== */
@@ -17,29 +22,39 @@
   /* ========== Colors ========== */
   /* Main */
   --color-primary-dark: #131921;
-  --color-secondary-dark: #232F3E;
+  --color-secondary-dark: #232f3e;
   --color-primary-white: #ffffff;
   --color-primary-black: #000000;
   /* Gray */
-  --color-gray-950: #131A22;
-  --color-gray-900: #37475A;
+  --color-gray-950: #131a22;
+  --color-gray-900: #37475a;
   --color-gray-800: #565959;
-  --color-gray-700: #5C5C5C;
+  --color-gray-700: #5c5c5c;
   --color-gray-600: #717171;
   --color-gray-500: #787878;
-  --color-gray-400: #7F7F7F;
+  --color-gray-400: #7f7f7f;
   --color-gray-300: #999999;
-  --color-gray-200: #B4B4B4;
-  --color-gray-100: #D9D9D9;
+  --color-gray-200: #b4b4b4;
+  --color-gray-100: #d9d9d9;
+  --color-section: #575757;
+
   /* Orange & Yellow */
-  --color-orange-dark: #DE7921;
-  --color-orange: #FF9900;
-  --color-orange-light: #FFD814;
-  --color-yellow: #FFCC00;
+  --color-orange-dark: #de7921;
+  --color-orange: #ff9900;
+  --color-orange-light: #ffd814;
+  --color-yellow: #ffcc00;
   /* Blue */
-  --color-blue-dark: #1F8394;
-  --color-blue: #2A8FD7;
+  --color-blue-dark: #1f8394;
+  --color-blue: #2a8fd7;
   /* Status Colors */
-  --color-red: #B12704;
-  --color-green: #71ED58;
+  --color-red: #b12704;
+  --color-green: #71ed58;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: red;
+  height: 100% !important;
+  color: #212121 !important;
+  margin-bottom: 50px !important;
 }
