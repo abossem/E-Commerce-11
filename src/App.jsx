@@ -1,16 +1,15 @@
-import { Route, Routes } from "react-router-dom";
-import "./App.css";
-import LoginPage from "./Pages/LoginPage/LoginPage";
-import RegisterPage from './Pages/RegisterPage/RegisterPage';
-
+import Footer from "./Components/Footer/Footer";
+import NavBar from "./Components/NavBar/NavBar";
+import Home from "./pages/Home";
+import ProductsPage from "./pages/ProductsPage";
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-      </Routes>
+      <NavBar />
+      <Home />
+      <ProductsPage />
+      <Footer />
     </>
   );
 }
