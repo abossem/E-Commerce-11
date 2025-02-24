@@ -47,14 +47,6 @@ body {
   --color-blue-dark: #1f8394;
   --color-blue: #2a8fd7;
   /* Status Colors */
-  --color-red: #b12704;
-  --color-green: #71ed58;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  background-color: red;
-  height: 100% !important;
-  color: #212121 !important;
-  margin-bottom: 50px !important;
+  --color-red: #B12704;
+  --color-green: #71ED58;
 }
