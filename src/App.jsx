@@ -1,8 +1,16 @@
+import Footer from "./Components/Footer/Footer";
+import NavBar from "./Components/NavBar/NavBar";
+import Home from "./pages/Home";
+import ProductsPage from "./pages/ProductsPage";
+
 function App() {
   return (
-    <div className="text-xl underline text-blue-600 font-bold font-inter">
-      Hello World From Tailwindcss!
-    </div>
+    <>
+      <NavBar />
+      <Home />
+      <ProductsPage />
+      <Footer />
+    </>
   );
 }
 
