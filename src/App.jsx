@@ -1,14 +1,12 @@
 import Footer from "./Components/Footer/Footer";
 import NavBar from "./Components/NavBar/NavBar";
-import Home from "./pages/Home";
-import ProductsPage from "./pages/ProductsPage";
+import LoginPage from "./Pages/LoginPage/LoginPage";
 
 function App() {
   return (
     <>
       <NavBar />
-      <Home />
-      <ProductsPage />
+     <LoginPage />
       <Footer />
     </>
   );

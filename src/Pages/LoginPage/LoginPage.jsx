@@ -1,9 +1,9 @@
 import { IoMdArrowDropright } from "react-icons/io";
-import { Link } from "react-router-dom";
+
 
 export default function LoginPage() {
   return (
-    <div className="flex justify-center flex-col items-center min-h-screen container">
+    <div className="flex justify-center flex-col items-center min-h-screen container mt-6">
       <div>
         <div className="bg-white p-8 rounded border border-gray-100 max-w-[500px]">
           <div className="flex justify-center mb-4">
@@ -19,7 +19,11 @@ export default function LoginPage() {
 
           <form>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              Email or mobile phone number
+              Email
+            </label>
+            <input type="text" className="w-full border-1 rounded p-2 mb-4 " />
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+             Password
             </label>
             <input type="text" className="w-full border-1 rounded p-2 mb-4 " />
           </form>
@@ -42,16 +46,16 @@ export default function LoginPage() {
 
           <div className="mt-4 text-sm flex  items-center gap-1">
             <IoMdArrowDropright />
-            <Link to="/" className="text-blue">
+            <a  className="text-blue">
               Need help?
-            </Link>
+            </a>
           </div>
 
           <div className="mt-6 pt-4 border-t border-gray-100">
             <h4 className="font-semibold text-xl">Buying for work?</h4>
-            <Link to={`/`} className="text-blue">
+            <a  className="text-blue">
               Shop on Amazon Business
-            </Link>
+            </a>
           </div>
         </div>
         <div>
@@ -63,11 +67,11 @@ export default function LoginPage() {
             <div className="absolute right-0 w-1/3 h-[1px] bg-gray-100 bottom-1/2 translate-y-1/2"></div>
           </div>
 
-          <Link
-            to={`/register`}
+          <a
+           
             className="w-full block text-center p-4 transition-all  mt-2 cursor-pointer border border-gray-400 py-2 rounded hover:bg-gray-200">
             Create your Amazon account
-          </Link>
+          </a>
         </div>
       </div>
       <div className="w-full flex justify-center border-t pt-3 border-gray-100 items-center mt-8">

@@ -14,7 +14,7 @@ export default function NavBar() {
             </div>
             <div className="location md:flex  items-end  hidden">
               <MapPin size={26} strokeWidth={1} />
-              <div className="">
+              <div className="cursor-pointer">
                 <span className="text-gray-200 font-lato text-[12px] lg:text-[14px]">
                   Delivering to
                 </span>
@@ -27,7 +27,7 @@ export default function NavBar() {
               <select
                 name="categories"
                 id="categories"
-                className="bg-gray-300 h-full px-2 hidden md:flex"
+                className="bg-gray-300 h-full px-2 hidden md:flex cursor-pointer"
               >
                 <option value="All">All</option>
               </select>
@@ -46,7 +46,7 @@ export default function NavBar() {
               <select
                 name="lang"
                 id="lang"
-                className="border-none rounded-none focus:outline-none px-1"
+                className="border-none rounded-none focus:outline-none px-1 cursor-pointer"
               >
                 <option className=" text-primary-black" value="EN">
                   EN
@@ -56,12 +56,12 @@ export default function NavBar() {
                 </option>
               </select>
             </div>
-            <div className="sign-in hidden md:flex flex-col items-start relative group">
+            <div className="sign-in hidden md:flex flex-col items-start relative group cursor-pointer">
               <p className="font-lato font-bold">Hello, Sign in</p>
               <p className="font-lato flex items-center gap-1">
                 Account & Lists <ChevronDown className="w-4 h-4" />
               </p>
-              <div className="dropdown hidden group-hover:block absolute top-12 left-0 bg-primary-white text-primary-black p-4 w-[200px]">
+              <div className="dropdown hidden group-hover:block absolute top-12 -left-3 bg-gray-50 text-primary-black p-4">
                 <ul>
                   <li>sign in</li>
                   <li>sign up</li>

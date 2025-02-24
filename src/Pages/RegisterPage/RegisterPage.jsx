@@ -58,18 +58,18 @@ export default function RegisterPage() {
 
         <div className="mt-4 text-sm">
           <p className="font-medium text-xl">Buying for work?</p>
-          <Link to={``} className="text-blue">
+          <a className="text-blue">
             Create a free business account
-          </Link>
+          </a>
         </div>
 
         <div className="mt-4 text-sm">
           <p className="flex items-center gap-1">
             <span className="text-[19px]"> Already have an account? </span>
-            <Link to={`/login`} className="text-blue flex items-center gap-1">
+            <a className="text-blue flex items-center gap-1">
               Sign in
               <IoMdArrowDropright />
-            </Link>
+            </a>
           </p>
           <p className="text-2xs mt-2 ">
             By creating an account or logging in, you agree to Amazon&apos;s{" "}
@@ -77,9 +77,9 @@ export default function RegisterPage() {
               Conditions of Use
             </a>{" "}
             and{" "}
-            <Link to="" className="text-blue">
+            <a href="#" className="text-blue">
               Privacy Notice
-            </Link>
+            </a>
             .
           </p>
         </div>
