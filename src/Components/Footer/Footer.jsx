@@ -3,9 +3,9 @@ import India from "../../assets/india.png";
 import { Globe } from "lucide-react";
 export default function Footer() {
   return (
-    <section className="footer bg-secondary-dark  text-primary-white fixed bottom-0 left-0 w-full z-[100] pt-10  font-noto-serif-gujarati">
+    <section className="footer bg-secondary-dark  text-primary-white pt-10  font-noto-serif-gujarati ">
       <div className="container mx-auto mb-12">
-        <div className="info flex justify-between items-start gap-10  mx-auto">
+        <div className="info flex flex-col md:flex-row md:justify-between md:ml-0 justify-center items-start gap-10  mx-auto pl-6">
           <div className="know-us flex flex-col gap-1">
             <h3 className="text-[18.5px] font-semibold">
               Get to know <br /> Us
@@ -143,14 +143,18 @@ export default function Footer() {
         </div>
       </div>
       <div className="w-full border-t border-gray-700  ">
-        <div className="container mx-auto flex justify-center items-center my-6 gap-5 text-gray-200">
+        <div className="container mx-auto flex flex-col md:flex-row md:ml-0 justify-center items-center my-6 gap-5 text-gray-200">
           <div className="logo w-[109px]">
             <img className="w-full" src={Amazon} alt="" />
           </div>
           <div className="flex items-center gap-2">
             <div className="lang border rounded-sm border-primary-white p-3 flex items-center gap-2">
               <Globe size={24} />
-              <select name="lang" id="lang" className=" focus:outline-none ">
+              <select
+                name="languages"
+                id="languages"
+                className=" focus:outline-none "
+              >
                 <option className=" text-primary-black" value="EN">
                   English
                 </option>
@@ -168,8 +172,8 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className=" bg-primary-dark mt-4 py-3  ">
-        <div className="container mx-auto flex justify-between items-center gap-5">
+      <div className=" bg-primary-dark mt-4 py-8  ">
+        <div className="container flex flex-col md:flex-row md:ml-0 justify-between pl-6 items-start gap-5">
           <div className="  flex flex-col items-start gap-6 ">
             <div className="flex flex-col ">
               <h4 className="font-medium">AbeBooks</h4>
@@ -235,7 +239,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="copy-right flex flex-col justify-center items-center mt-6 gap-2">
+        <div className="copy-right flex flex-col md:ml-0 justify-center items-center mt-6 gap-2 ml-6">
           <div className="info flex items-center gap-5">
             <p className="font-medium text-[12px]">Conditons of Use & Sale</p>
             <p className="font-medium text-[12px]">Privacy Notice</p>
