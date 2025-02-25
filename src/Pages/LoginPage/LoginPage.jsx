@@ -3,7 +3,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 
 export default function LoginPage() {
   return (
-    <div className="flex justify-center flex-col items-center min-h-screen container mt-6">
+    <div className="flex justify-center flex-col items-center min-h-screen w-full  mt-6">
       <div>
         <div className="bg-white p-8 rounded border border-gray-100 max-w-[500px]">
           <div className="flex justify-center mb-4">

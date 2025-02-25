@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function RegisterPage() {
   return (
-    <div className="flex justify-center flex-col items-center min-h-screen container">
+    <div className="flex justify-center flex-col items-center min-h-screen w-full mt-6">
       <div className="w-full max-w-md bg-white p-6 rounded-md border border-gray-100">
         <div className="flex justify-center mb-4">
           <img
