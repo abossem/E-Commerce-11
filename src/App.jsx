@@ -1,7 +1,7 @@
 import Footer from "./Components/Footer/Footer";
 import NavBar from "./Components/NavBar/NavBar";
+import ProductsPage from "./Pages/ProductsPage";
 import Home from "./pages/Home";
-import ProductsPage from "./pages/ProductsPage";
 
 function App() {
   return (
