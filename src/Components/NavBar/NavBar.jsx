@@ -9,10 +9,10 @@ export default function NavBar() {
       <section className="navbar bg-primary-dark ">
         <div className="px-4 text-primary-white  w-full">
           <div className="head  flex items-center justify-between gap-3 lg:gap-5 lg:py-3 flex-wrap md:flex-nowrap">
-            <div className="logo order-first flex items-center gap-1">
+            <Link to={"/"} className="logo order-first flex items-center gap-1">
               <Menu size={24} className="md:hidden" />
               <img src={Amazon} alt="Amazon Logo" />
-            </div>
+            </Link>
             <div className="location md:flex  items-end  hidden">
               <MapPin size={26} strokeWidth={1} />
               <div className="cursor-pointer">
@@ -64,8 +64,13 @@ export default function NavBar() {
               </p>
               <div className="dropdown hidden group-hover:block absolute top-12 -left-3 bg-gray-50 text-primary-black p-4">
                 <ul>
-                  <li> <Link to={'/login'}>sign in</Link></li>
-                  <li><Link to={'/signup'}>sign up</Link></li>
+                  <li>
+                    {" "}
+                    <Link to={"/login"}>sign in</Link>
+                  </li>
+                  <li>
+                    <Link to={"/signup"}>sign up</Link>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -73,15 +78,15 @@ export default function NavBar() {
               <span className="capitalize font-lato">returns &</span>
               <p className="capitalize font-lato font-bold">Orders</p>
             </div>
-            <div className="cart flex items-center gap-2  ">
+            <Link to={"/cart"} className="cart flex items-center gap-2  ">
               <ShoppingCart className="sm:w-[50px] sm:h-[50px] md:w-[20px] md:h-[20px] lg:w-[40px] lg:h-[40px]" />
               <span className="font-lato font-bold hidden lg:flex">Cart</span>
-            </div>
+            </Link>
           </div>
         </div>
         <div className=" w-full bg-secondary-dark ">
           <div className=" container px-4 flex items-center overflow-hidden overflow-x-scroll  md:overflow-visible md:overflow-x-visible  text-primary-white gap-1 ">
-            <Link to={'/'} className=" flex items-center justify-center">
+            <Link to={"/"} className=" flex items-center justify-center">
               <Menu size={24} />
               All
             </Link>
