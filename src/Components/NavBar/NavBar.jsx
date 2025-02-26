@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Amazon from "../../assets/amazon.png";
 import India from "../../assets/india.png";
 import { MapPin, Search, ShoppingCart, Menu, ChevronDown } from "lucide-react";
@@ -63,8 +64,8 @@ export default function NavBar() {
               </p>
               <div className="dropdown hidden group-hover:block absolute top-12 -left-3 bg-gray-50 text-primary-black p-4">
                 <ul>
-                  <li>sign in</li>
-                  <li>sign up</li>
+                  <li> <Link to={'/login'}>sign in</Link></li>
+                  <li><Link to={'/signup'}>sign up</Link></li>
                 </ul>
               </div>
             </div>
@@ -80,10 +81,10 @@ export default function NavBar() {
         </div>
         <div className=" w-full bg-secondary-dark ">
           <div className=" container px-4 flex items-center overflow-hidden overflow-x-scroll  md:overflow-visible md:overflow-x-visible  text-primary-white gap-1 ">
-            <a href="#" className=" flex items-center justify-center">
+            <Link to={'/'} className=" flex items-center justify-center">
               <Menu size={24} />
               All
-            </a>
+            </Link>
             <a href="#" className="py-4 px-2.5 min-w-fit ">
               Amazon mini TV
             </a>

@@ -1,15 +1,30 @@
-import Footer from "./Components/Footer/Footer";
-import NavBar from "./Components/NavBar/NavBar";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./Pages/LoginPage/LoginPage";
+import GuestRoute from "./Components/GuestRoute/GuestRoute";
+import Layout from "./Components/Layout/Layout";
+import Home from "./Pages/Home";
+import RegisterPage from "./Pages/RegisterPage/RegisterPage";
+import ProductsPage from "./Pages/ProductsPage";
 
 function App() {
-  return (
-    <>
-      <NavBar />
-      <LoginPage />
-      <Footer />
-    </>
-  );
+  const routes = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <GuestRoute>
+          <Layout />
+        </GuestRoute>
+      ),
+      children: [
+        { index: true, element: <Home /> },
+        { path: "/login", element: <LoginPage /> },
+        { path: "/signup", element: <RegisterPage /> },
+        { path: "/products", element: <ProductsPage /> },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={routes}></RouterProvider>;
 }
 
 export default App;
