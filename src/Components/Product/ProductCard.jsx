@@ -1,43 +1,59 @@
-import PropTypes from 'prop-types';
-import img from '../../assets/default_images/image2.png';
-import { Star } from 'lucide-react';
+import StarRating from './StarRating';
+import { forwardRef } from "react";
 
-export default function ProductCard ( { product } )
+const ProductCard = forwardRef( ( { product }, ref ) =>
 {
-  return <div className='
-    flex lg:flex-col items-center border-1 border-[#D9D9D9]
-    lg:gap-3 lg:justify-start lg:items-start  lg:p-3
-  '>
-    <div className="img w-[40%] lg:w-full">
-      <img src={ img } alt="" />
-    </div>
-    <div className="details w-[60%] lg:w-full p-5 flex flex-col gap-1">
-      <h4 className='font-medium text-sm lg:text-base lg:hover:text-[#c45500] cursor-pointer'>{ product.name }</h4>
-      <div className="rating flex items-center gap-2">
-        <span>4.4</span>
-        <div className="starts flex">
-          <Star color='#FF9900' fill='#FFCC00' size={ 16 } />
-          <Star color='#FF9900' fill='#FFCC00' size={ 16 } />
-          <Star color='#FF9900' fill='#FFCC00' size={ 16 } />
-          <Star color='#FF9900' fill='#FFCC00' size={ 16 } />
-          <Star color='#FF9900' size={ 16 } />
-        </div>
-        <span>(175)</span>
-      </div>
-      <div className="price flex items-start font-medium">
-        <span>EGP</span>
-        <span className='text-2xl'>{ product.price }</span>
-        <span>00</span>
-      </div>
-      <div className='text-sm'>
-        <span>Get it as soon as </span>
-        <span className='font-medium'>{ product.delivery_date }</span>
-      </div>
-      <button className='w-full bg-amber-300 rounded-4xl py-3 text-sm mt-1 cursor-pointer hover:bg-yellow-300'>Add to cart</button>
-    </div>
-  </div>;
-}
+  function formatCustomDate ( dateString )
+  {
+    const date = new Date( dateString );
 
-ProductCard.propTypes = {
-  product: PropTypes.object.isRequired
-};
+    // Get weekday and month abbreviation
+    const options = { weekday: 'short', day: 'numeric', month: 'short' };
+    const formattedDate = date.toLocaleDateString( 'en-US', options );
+
+    // Define time range
+    const timeRange = "7:00 am - 9:00 pm";
+
+    return `${ formattedDate } ${ timeRange }`;
+  }
+
+  return (
+    <div
+      ref={ ref } // ✅ وضع `ref` هنا داخل العنصر الرئيسي
+      className='
+        flex lg:flex-col items-center border-1 border-[#D9D9D9]
+        lg:gap-3 lg:justify-start lg:items-start lg:p-3
+      '
+    >
+      <div className="img w-[40%] lg:w-full">
+        <img src={ product.images[ 0 ] } alt={ product.name } className='object-cover'/>
+      </div>
+      <div className="details w-[60%] lg:w-full p-5 flex flex-col gap-1">
+        <h4 className='font-medium text-sm lg:text-base lg:hover:text-[#c45500] cursor-pointer'>
+          { product.name }
+        </h4>
+        <div className="rating flex items-center gap-2">
+          <span>{ product.reviews_avg }</span>
+          <div className="starts flex">
+            <StarRating rating={ Math.floor( product.reviews_avg ) } />
+          </div>
+          <span>({ product.reviews_count })</span>
+        </div>
+        <div className="price flex items-start font-medium">
+          <span>USD</span>
+          <span className='text-2xl'>{ ( product.price ).split( '.' )[ 0 ] }</span>
+          <span>{ ( product.price ).split( '.' )[ 1 ] }</span>
+        </div>
+        <div className='text-sm'>
+          <span>Get it as soon as </span>
+          <span className='font-medium'>{ formatCustomDate( product.delivery_time ) }</span>
+        </div>
+        <button className='w-full bg-amber-300 rounded-4xl py-3 text-sm mt-1 cursor-pointer hover:bg-yellow-300'>
+          Add to cart
+        </button>
+      </div>
+    </div>
+  );
+} );
+
+export default ProductCard;
