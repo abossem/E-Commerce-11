@@ -5,7 +5,7 @@ import emptyCart from "../../assets/empty-cart.png";
 export default function Cart() {
   const { cartItems } = useCartContext();
   return (
-    <div className="py-3 font-inter">
+    <div className="py-3 font-inter flex justify-center items-center">
       <div className="flex items-start flex-wrap gap-4 container px-4 md:px-10">
         <div className="flex-1 bg-gray-100/20 rounded-lg p-5 shadow">
           <h2 className="font-semibold text-xl  mb-3">Shopping Cart</h2>

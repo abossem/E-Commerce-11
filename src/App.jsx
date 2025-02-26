@@ -5,6 +5,7 @@ import Layout from "./Components/Layout/Layout";
 import Home from "./Pages/Home";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import ProductsPage from "./Pages/ProductsPage";
+import Cart from "./Components/Cart/Cart";
 
 function App() {
   const routes = createBrowserRouter([
@@ -20,6 +21,7 @@ function App() {
         { path: "/login", element: <LoginPage /> },
         { path: "/signup", element: <RegisterPage /> },
         { path: "/products", element: <ProductsPage /> },
+        { path: "/cart", element: <Cart /> },
       ],
     },
   ]);
