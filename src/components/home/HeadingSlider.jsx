@@ -8,17 +8,6 @@ import {
 } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-
-// const products = [
-//   { imageURL: "/heading-slider.png", category: "food" },
-//   { imageURL: "/heading-slider.png", category: "electronics" },
-//   { imageURL: "/heading-slider.png", category: "fashion" },
-// ];
-
 export default function HeadingSlider({ products, isLoading }) {
   return (
     <div className="relative w-full ">
