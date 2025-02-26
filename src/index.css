@@ -2,7 +2,6 @@
 
 @import "tailwindcss";
 
-
 @theme {
   /* ========== Typography ========== */
   --font-lato: "Lato", serif;
@@ -42,6 +41,10 @@
   --color-blue-dark: #1f8394;
   --color-blue: #2a8fd7;
   /* Status Colors */
-  --color-red: #B12704;
-  --color-green: #71ED58;
+  --color-red: #b12704;
+  --color-green: #71ed58;
+}
+
+button {
+  cursor: pointer;
 }
