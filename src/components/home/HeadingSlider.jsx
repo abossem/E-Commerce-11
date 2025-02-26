@@ -13,13 +13,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-const products = [
-  { imageURL: "/heading-slider.png", category: "food" },
-  { imageURL: "/heading-slider.png", category: "electronics" },
-  { imageURL: "/heading-slider.png", category: "fashion" },
-];
+// const products = [
+//   { imageURL: "/heading-slider.png", category: "food" },
+//   { imageURL: "/heading-slider.png", category: "electronics" },
+//   { imageURL: "/heading-slider.png", category: "fashion" },
+// ];
 
-export default function HeadingSlider() {
+export default function HeadingSlider({ products, isLoading }) {
   return (
     <div className="relative w-full ">
       {/*  Custom Navigation Buttons */}
@@ -44,12 +44,18 @@ export default function HeadingSlider() {
         loop={true}
         className="rounded-md overflow-hidden"
       >
+        {isLoading && (
+          <p className="h-full w-screen flex justify-center items-center text-red">
+            Loading.....
+          </p>
+        )}
+
         {products.map((category, i) => (
           <SwiperSlide key={i}>
-            <a href={`/Products/${category.category}`}>
+            <a href={`/Products/${category.name}`}>
               <img
-                src={category.imageURL}
-                alt={category.category}
+                src={category.sub_categories.at(0).image}
+                alt={category.sub_categories.at(0).name}
                 loading="lazy"
                 className="w-full max-h-[600px] sm:max-h-[500px] md:max-h-[600px] rounded-md shadow-md object-cover"
               />

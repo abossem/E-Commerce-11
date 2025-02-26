@@ -10,13 +10,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import SliderButtons from "../../ui/SliderButtons";
 
-import headingSlider from "/test-image.png";
-
-const images = Array(8).fill({ imageUrl: headingSlider });
+import { useHomeContext } from "../../context/homeContext";
+import { Link } from "react-router-dom";
 
 export default function Slider({
   title = "Best Sellers in Clothing & Accessories",
 }) {
+  const { categories } = useHomeContext();
+
   return (
     <div className="space-y-4 px-[30px] relative py-[25px] bg-primary-white h-[320px]  pb-[50px]">
       <h2 className="font-[700] text-[16px] md:text-[22px] md:leading-[30px] leading-[20px] text-primary-black max-sm:text-[12px]">
@@ -43,13 +44,15 @@ export default function Slider({
         }}
         className="h-full relative max-sm:[&_.swiper-scrollbar]{hidden}"
       >
-        {images.map((image, i) => (
-          <SwiperSlide key={i}>
-            <img
-              src={image.imageUrl}
-              alt="product-img"
-              className="md:h-[225px] max-sm:mx-auto max-sm:h-[200px] object-cover max-w-[280px] flex justify-center items-center space-x-2 h-[190px] "
-            />
+        {categories.map((category, i) => (
+          <SwiperSlide key={category?.id}>
+            <Link to={`/products/${category.sub_categories.at(0).name}`}>
+              <img
+                src={category?.sub_categories.at(0).image}
+                alt={category.sub_categories.at(0).name}
+                className="md:h-[225px] max-sm:mx-auto max-sm:h-[200px] object-cover max-w-[280px] flex justify-center items-center space-x-2 h-[190px] "
+              />
+            </Link>
           </SwiperSlide>
         ))}
 

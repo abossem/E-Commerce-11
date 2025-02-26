@@ -6,7 +6,7 @@ import { MapPin, Search, ShoppingCart, Menu, ChevronDown } from "lucide-react";
 export default function NavBar() {
   return (
     <>
-      <section className="navbar bg-primary-dark ">
+      <section className="navbar bg-primary-dark">
         <div className="px-4 text-primary-white  w-full">
           <div className="head  flex items-center justify-between gap-3 lg:gap-5 lg:py-3 flex-wrap md:flex-nowrap">
             <Link to={"/"} className="logo order-first flex items-center gap-1">

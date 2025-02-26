@@ -1,19 +1,17 @@
-function Card({ title, items, link, to }) {
+function Card({ categories }) {
   return (
     <div className="bg-primary-white p-4 h-full flex flex-col">
-      {/* Title */}
       <h2 className="text-primary-black xl:text=[22px] lg:text-[20px] md:text-[18px] text-[16px] max-sm:text-center font-noto-serif-gujarati font-[700] leading-[31px] mb-2">
-        {title}
+        {categories?.name}
       </h2>
 
-      {/* Items Grid - Makes the link always push to the bottom */}
       <div className="grid grid-cols-2 gap-5 flex-grow">
-        {items.map((item, index) => (
-          <div key={index} className="">
-            <a href={to}>
+        {categories?.sub_categories.map((item, index) => (
+          <div key={index}>
+            <a href={`products/${item.name}`}>
               <img
-                src={item.image}
-                alt="product-image"
+                src={item?.image}
+                alt={item?.name}
                 className="w-full h-auto object-cover aspect-square "
               />
             </a>
@@ -24,12 +22,11 @@ function Card({ title, items, link, to }) {
         ))}
       </div>
 
-      {/* See More Link - Always at the bottom */}
       <a
-        href={to}
+        href={`products`}
         className="text-blue-dark text-[15px] leading-[21px] font-[500] mt-6 hover:underline self-start"
       >
-        {link || "See More"}
+        "See More"
       </a>
     </div>
   );
