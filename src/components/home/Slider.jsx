@@ -15,7 +15,7 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import SliderButtons from "../../ui/SliderButtons";
 
-import headingSlider from "/test-image.png"; // استيراد الصورة
+import headingSlider from "/test-image.png";
 
 const images = Array(8).fill({ imageUrl: headingSlider });
 
