@@ -1,3 +1,4 @@
+import Cart from "./Components/Cart/Cart";
 import Footer from "./Components/Footer/Footer";
 import NavBar from "./Components/NavBar/NavBar";
 import Home from "./pages/Home";
@@ -9,6 +10,7 @@ function App() {
       <NavBar />
       <Home />
       <ProductsPage />
+      <Cart />
       <Footer />
     </>
   );
