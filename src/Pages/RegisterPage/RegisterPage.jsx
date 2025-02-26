@@ -50,7 +50,8 @@ export default function RegisterPage() {
 
             <button
               type="submit"
-              className="w-full bg-yellow-400 text-black py-2 rounded-md font-medium">
+              className="w-full bg-yellow-400 text-black py-2 rounded-md font-medium"
+            >
               Verify mobile number
             </button>
           </div>
@@ -58,9 +59,7 @@ export default function RegisterPage() {
 
         <div className="mt-4 text-sm">
           <p className="font-medium text-xl">Buying for work?</p>
-          <a className="text-blue">
-            Create a free business account
-          </a>
+          <a className="text-blue">Create a free business account</a>
         </div>
 
         <div className="mt-4 text-sm">
