@@ -1,3 +1,4 @@
+import axios from "axios";
 import PropTypes from "prop-types";
 import { createContext, useEffect, useRef, useState } from "react";
 
@@ -11,7 +12,14 @@ export default function ProductsContextProvider({ children }) {
   const [loading, setLoading] = useState(false);
 
   const lastProductRef = useRef(null);
-
+  async function getProductsByBrand(brandName) {
+    const options = {
+      url: `https://e-commerce-11-api.vercel.app/api/api/products/brand/${brandName}`,
+      method: "GET",
+    };
+    let { data } = await axios.request(options);
+    console.log(data);
+  }
   useEffect(() => {
     if (page > 7) return;
     const fetchProducts = async () => {
@@ -63,6 +71,7 @@ export default function ProductsContextProvider({ children }) {
     products,
     lastProductRef,
     loading,
+    getProductsByBrand,
   };
 
   return (

@@ -1,9 +1,11 @@
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import StarRating from "./StarRating";
+import { ProductsContext } from "../../context/ProductsContext";
 
 export default function ProductSidebar() {
   const [showFilters, setShowFilters] = useState(false);
+  const { getProductsByBrand } = useContext(ProductsContext);
 
   const brands = [
     "Samsung",
@@ -84,7 +86,13 @@ export default function ProductSidebar() {
             <h3 className="font-bold mb-1 text-lg">Brands</h3>
             {brands.map((brand, i) => {
               return (
-                <div key={brand} className="flex items-center gap-2 mt-1">
+                <div
+                  onClick={() => {
+                    getProductsByBrand(brand);
+                  }}
+                  key={brand}
+                  className="flex items-center gap-2 mt-1"
+                >
                   <input type="radio" name="brand" id={"b" + i} />
                   <label
                     htmlFor={"b" + i}
