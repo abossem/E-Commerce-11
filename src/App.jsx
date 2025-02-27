@@ -36,11 +36,7 @@ function App() {
 
   return (
     <>
-      <UserProvider>
-        <CartContextProvider>
-          <RouterProvider router={routes}></RouterProvider>
-        </CartContextProvider>
-      </UserProvider>
+      <RouterProvider router={routes}></RouterProvider>
     </>
   );
 }

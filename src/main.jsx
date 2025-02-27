@@ -9,15 +9,18 @@ import "swiper/css/scrollbar";
 import CartContextProvider from "./context/CartContext.jsx";
 import HomeContextProvider from "./context/homeContext.jsx";
 import ProductsContextProvider from "./context/ProductsContext.jsx";
+import UserProvider from "./context/User.context.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <HomeContextProvider>
-      <CartContextProvider>
-        <ProductsContextProvider>
-        <App />
-        </ProductsContextProvider>
-      </CartContextProvider>
-    </HomeContextProvider>
+    <UserProvider>
+      <HomeContextProvider>
+        <CartContextProvider>
+          <ProductsContextProvider>
+            <App />
+          </ProductsContextProvider>
+        </CartContextProvider>
+      </HomeContextProvider>
+    </UserProvider>
   </StrictMode>
 );

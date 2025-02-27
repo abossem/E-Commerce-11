@@ -1,9 +1,11 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useUserContext } from "./User.context";
 
 const CartContext = createContext();
 
 export default function CartContextProvider({ children }) {
+  const { token } = useUserContext();
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const getUserCartItems = async () => {
@@ -12,7 +14,7 @@ export default function CartContextProvider({ children }) {
         "https://e-commerce-11-api.vercel.app/api/api/cart",
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -28,7 +30,7 @@ export default function CartContextProvider({ children }) {
     const options = {
       url: "https://e-commerce-11-api.vercel.app/api/api/cart",
       method: "POST",
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      headers: { Authorization: `Bearer ${token}` },
       data: { product_id: product.id, quantity: 1 },
     };
     try {
@@ -59,7 +61,7 @@ export default function CartContextProvider({ children }) {
         { quantity },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -76,7 +78,7 @@ export default function CartContextProvider({ children }) {
         `https://e-commerce-11-api.vercel.app/api/api/cart/${productId}`,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
