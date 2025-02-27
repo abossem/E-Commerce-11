@@ -7,9 +7,20 @@ import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import ProductsPage from "./Pages/ProductsPage";
 import Cart from "./Components/Cart/Cart";
 import UserProvider from "./context/User.context";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import FilterProductsByCategory from "./pages/FilterProductsByCategory";
 
 function App() {
   const routes = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>
+      ),
+      children: [{ path: "/cart", element: <Cart /> }],
+    },
     {
       path: "/",
       element: (
@@ -22,7 +33,10 @@ function App() {
         { path: "/login", element: <LoginPage /> },
         { path: "/signup", element: <RegisterPage /> },
         { path: "/products", element: <ProductsPage /> },
-        { path: "/cart", element: <Cart /> },
+        {
+          path: "/products/category/:category",
+          element: <FilterProductsByCategory />,
+        },
       ],
     },
   ]);

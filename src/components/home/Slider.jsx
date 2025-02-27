@@ -46,7 +46,9 @@ export default function Slider({
       >
         {categories.map((category, i) => (
           <SwiperSlide key={category?.id}>
-            <Link to={`/products/${category.sub_categories.at(0).name}`}>
+            <Link
+              to={`/products/category/${category.sub_categories.at(0).name}`}
+            >
               <img
                 src={category?.sub_categories.at(0).image}
                 alt={category.sub_categories.at(0).name}
