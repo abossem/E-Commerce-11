@@ -1,20 +1,22 @@
+import { Link } from "react-router-dom";
+
 function Card({ categories }) {
   return (
     <div className="bg-primary-white p-4 h-full flex flex-col">
       <h2 className="text-primary-black xl:text=[22px] lg:text-[20px] md:text-[18px] text-[16px] max-sm:text-center font-noto-serif-gujarati font-[700] leading-[31px] mb-2">
-        {categories?.name}
+        {categories.name}
       </h2>
 
       <div className="grid grid-cols-2 gap-5 flex-grow">
-        {categories?.sub_categories.map((item, index) => (
+        {categories.sub_categories.map((item, index) => (
           <div key={index}>
-            <a href={`products/${item.name}`}>
+            <Link to={`products/category/${item.name}`}>
               <img
                 src={item?.image}
                 alt={item?.name}
                 className="w-full h-auto object-cover aspect-square "
               />
-            </a>
+            </Link>
             <p className="font-[400] text-[12px] leading-[17px] ">
               {item.name}
             </p>
@@ -22,12 +24,12 @@ function Card({ categories }) {
         ))}
       </div>
 
-      <a
-        href={`products`}
+      <Link
+        to={`/products`}
         className="text-blue-dark text-[15px] leading-[21px] font-[500] mt-6 hover:underline self-start"
       >
         "See More"
-      </a>
+      </Link>
     </div>
   );
 }

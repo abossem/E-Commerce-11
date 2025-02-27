@@ -1,14 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Amazon from "../../assets/amazon.png";
 import India from "../../assets/india.png";
 import { MapPin, Search, ShoppingCart, Menu, ChevronDown } from "lucide-react";
 import { useUserContext } from "../../context/User.context";
+import { useState } from "react";
 
 export default function NavBar() {
-  const {token , userInfo, logOut} = useUserContext() 
-  
-  
-  
+  const { token, userInfo, logOut } = useUserContext();
+
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+  const lowerQuery = search.toLowerCase();
+
+  function onClick() {
+    const searchQuery = lowerQuery.replace(/^./, (char) => char.toUpperCase());
+    navigate(`/products/category/${searchQuery}`);
+  }
+
   return (
     <>
       <section className="navbar bg-primary-dark">
@@ -29,7 +37,10 @@ export default function NavBar() {
                 </p>
               </div>
             </div>
-            <div className="rounded-md border-none  overflow-hidden h-[50px] flex items-center justify-center grow order-last md:order-none">
+            <form
+              onSubmit={onClick}
+              className="rounded-md border-none  overflow-hidden h-[50px] flex items-center justify-center grow order-last md:order-none"
+            >
               <select
                 name="categories"
                 id="categories"
@@ -37,16 +48,22 @@ export default function NavBar() {
               >
                 <option value="All">All</option>
               </select>
+
               <input
                 type="search"
                 name="search"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search Amazon.in"
                 className="bg-primary-white h-full placeholder:text-gray-300 border-0 focus:outline-0 text-primary-black px-2 grow"
               />
-              <div className="icon bg-orange-light h-full flex items-center justify-center px-3 text-primary-black">
+              <button
+                onClick={onClick}
+                className="icon bg-orange-light h-full flex items-center justify-center px-3 text-primary-black"
+              >
                 <Search size={24} />
-              </div>
-            </div>
+              </button>
+            </form>
             <div className=" items-center  hidden md:flex ">
               <img src={India} className="w-full" alt="India Flag Image" />
               <select
@@ -63,19 +80,30 @@ export default function NavBar() {
               </select>
             </div>
             <div className="sign-in hidden md:flex flex-col items-start relative group cursor-pointer">
-              <p className="font-lato font-bold">Hello, {token ? <span>{userInfo?.name}</span> : <span>Sign in</span>}</p>
+              <p className="font-lato font-bold">
+                Hello,{" "}
+                {token ? <span>{userInfo?.name}</span> : <span>Sign in</span>}
+              </p>
               <p className="font-lato flex items-center gap-1">
                 Account & Lists <ChevronDown className="w-4 h-4" />
               </p>
               <div className="dropdown hidden group-hover:block absolute top-12 -left-3 bg-gray-50 text-primary-black z-[1000] p-4">
                 <ul>
-                  {token ? <li onClick={logOut} className="cursor-pointer">sign out</li> : <><li>
-                    {" "}
-                    <Link to={"/login"}>sign in</Link>
-                  </li>
-                  <li>
-                    <Link to={"/signup"}>sign up</Link>
-                  </li></>}
+                  {token ? (
+                    <li onClick={logOut} className="cursor-pointer">
+                      sign out
+                    </li>
+                  ) : (
+                    <>
+                      <li>
+                        {" "}
+                        <Link to={"/login"}>sign in</Link>
+                      </li>
+                      <li>
+                        <Link to={"/signup"}>sign up</Link>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>
@@ -89,7 +117,7 @@ export default function NavBar() {
             </Link>
           </div>
         </div>
-        <div className=" w-full bg-secondary-dark ">
+        <div className=" w-full bg-secondary-dark overflow-x-auto max-sm:mt-3 ">
           <div className=" container px-4 flex items-center overflow-hidden overflow-x-scroll  md:overflow-visible md:overflow-x-visible  text-primary-white gap-1 ">
             <Link to={"/"} className=" flex items-center justify-center">
               <Menu size={24} />
