@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import StarRating from "./StarRating";
 import { forwardRef } from "react";
 import { useCartContext } from "../../context/CartContext";
+import { Link } from "react-router-dom";
 
 const ProductCard = forwardRef(({ product }, ref) => {
   // console.log({ product });
@@ -36,9 +37,12 @@ const ProductCard = forwardRef(({ product }, ref) => {
         />
       </div>
       <div className="details w-[60%] lg:w-full p-5 flex flex-col gap-1">
-        <h4 className="font-medium text-sm lg:text-base lg:hover:text-[#c45500] cursor-pointer">
+        <Link
+          to={`/product/${product.id}`}
+          className="font-medium text-sm lg:text-base lg:hover:text-[#c45500] cursor-pointer"
+        >
           {product.name}
-        </h4>
+        </Link>
         <div className="rating flex items-center gap-2">
           <span>{product.reviews_avg}</span>
           <div className="starts flex">
