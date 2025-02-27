@@ -15,15 +15,6 @@ function App() {
     {
       path: "/",
       element: (
-        <ProtectedRoute>
-          <Layout />
-        </ProtectedRoute>
-      ),
-      children: [{ path: "/cart", element: <Cart /> }],
-    },
-    {
-      path: "/",
-      element: (
         <GuestRoute>
           <Layout />
         </GuestRoute>
@@ -37,6 +28,7 @@ function App() {
           path: "/products/category/:category",
           element: <FilterProductsByCategory />,
         },
+        { path: "/cart", element: <Cart /> },
       ],
     },
   ]);

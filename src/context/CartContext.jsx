@@ -1,11 +1,9 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
-import { useUserContext } from "./User.context";
 
 const CartContext = createContext();
 
 export default function CartContextProvider({ children }) {
-  const token = useUserContext();
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const getUserCartItems = async () => {
@@ -14,7 +12,7 @@ export default function CartContextProvider({ children }) {
         "https://e-commerce-11-api.vercel.app/api/api/cart",
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
@@ -27,16 +25,26 @@ export default function CartContextProvider({ children }) {
     }
   };
   const addItemToCart = async (product) => {
+    const options = {
+      url: "https://e-commerce-11-api.vercel.app/api/api/cart",
+      method: "POST",
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      data: { product_id: product.id, quantity: 1 },
+    };
     try {
-      await axios.post(
-        "https://e-commerce-11-api.vercel.app/api/api/cart",
-        { ...product },
-        {
-          headers: {
-            Authorization: `Bearer 3|s6YifE6Pd0OgAq7cTuM6zgFFfG9drkYXBeZsnV562b4f156c`,
-          },
-        }
-      );
+      // await axios.post(
+      //   "https://e-commerce-11-api.vercel.app/api/api/cart",
+      //   { ...product },
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+      //     },
+
+      //   },
+      //   data: { product_id: product.id, quantity: 1 },
+      // );
+      let { data } = await axios.request(options);
+      console.log("🚀 ~ addItemToCart ~ data:", data);
       await getUserCartItems();
     } catch (error) {
       console.log("🚀 ~ addItemToCart ~ error:", error);
@@ -51,7 +59,7 @@ export default function CartContextProvider({ children }) {
         { quantity },
         {
           headers: {
-            Authorization: `Bearer 3|s6YifE6Pd0OgAq7cTuM6zgFFfG9drkYXBeZsnV562b4f156c`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
@@ -68,7 +76,7 @@ export default function CartContextProvider({ children }) {
         `https://e-commerce-11-api.vercel.app/api/api/cart/${productId}`,
         {
           headers: {
-            Authorization: `Bearer 3|s6YifE6Pd0OgAq7cTuM6zgFFfG9drkYXBeZsnV562b4f156c`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );

@@ -1,8 +1,12 @@
 import PropTypes from "prop-types";
 import StarRating from "./StarRating";
 import { forwardRef } from "react";
+import { useCartContext } from "../../context/CartContext";
 
 const ProductCard = forwardRef(({ product }, ref) => {
+  console.log({ product });
+
+  const { addItemToCart } = useCartContext();
   function formatCustomDate(dateString) {
     const date = new Date(dateString);
 
@@ -53,7 +57,12 @@ const ProductCard = forwardRef(({ product }, ref) => {
             {formatCustomDate(product.delivery_time)}
           </span>
         </div>
-        <button className="w-full bg-amber-300 rounded-4xl py-3 text-sm mt-1 cursor-pointer hover:bg-yellow-300">
+        <button
+          onClick={() => {
+            addItemToCart(product);
+          }}
+          className="w-full bg-amber-300 rounded-4xl py-3 text-sm mt-1 cursor-pointer hover:bg-yellow-300"
+        >
           Add to cart
         </button>
       </div>

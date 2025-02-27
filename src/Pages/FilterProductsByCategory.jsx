@@ -45,7 +45,7 @@ function FilterProductsByCategory() {
       >
         {isLoading && <Loading />}
         {filterProduct &&
-          filterProduct.map((product, index) => {
+          filterProduct.map((product) => {
             return <ProductCard key={product.id} product={product} />;
           })}
       </div>

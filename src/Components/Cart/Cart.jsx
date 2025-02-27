@@ -50,7 +50,10 @@ export default function Cart() {
                   {" "}
                   EGP{" "}
                   {cartItems?.reduce(
-                    (acc, item) => acc + item.product.price * item.quantity,
+                    (acc, item) =>
+                      Number(
+                        (acc + item.product.price * item.quantity).toFixed(2)
+                      ),
                     0
                   )}
                 </span>
