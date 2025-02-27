@@ -18,7 +18,9 @@ export default function ProductsContextProvider({ children }) {
       method: "GET",
     };
     let { data } = await axios.request(options);
-    console.log(data);
+    if (data.status == "success") {
+      setProducts(data.data);
+    }
   }
   useEffect(() => {
     if (page > 7) return;
