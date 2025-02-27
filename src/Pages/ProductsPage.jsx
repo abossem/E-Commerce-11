@@ -1,13 +1,13 @@
 import ProductSidebar from '../Components/Product/ProductSidebar';
 import ProductCard from '../Components/Product/ProductCard';
 import { useContext } from 'react';
-import { ProductsContext } from '../Context/ProductsContext';
+import { ProductsContext } from '../context/ProductsContext';
 
 export default function ProductsPage ()
 {
   const { products, loading, lastProductRef } = useContext( ProductsContext );
 
-  console.log( products );
+  // console.log( "test" );
   return <>
     <div
       className="relative px-4 flex flex-col gap-3 lg:gap-0 lg:max-w-[1400px] lg:mx-auto lg:p-4 lg:grid lg:grid-cols-5"

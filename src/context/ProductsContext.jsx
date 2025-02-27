@@ -14,6 +14,7 @@ export default function ProductsContextProvider ( { children } )
 
   useEffect( () =>
   {
+    if ( page > 7 ) return;
     const fetchProducts = async () =>
     {
       setLoading( true );
@@ -21,7 +22,19 @@ export default function ProductsContextProvider ( { children } )
       const url = 'https://e-commerce-11-api.vercel.app/api/api/products?page=';
       const res = await fetch( url + page );
       const { data } = await res.json();
-      setProducts( ( prev ) => [ ...prev, ...data ] );
+      setProducts( ( prev ) =>
+      {
+        // ✅ إزالة التكرارات بناءً على `id`
+        const uniqueProducts = [ ...prev, ...data ].reduce( ( acc, item ) =>
+        {
+          if ( !acc.some( p => p.id === item.id ) )
+          {
+            acc.push( item );
+          }
+          return acc;
+        }, [] );
+        return uniqueProducts;
+      } );
       // there is problem here
 
       setLoading( false );
@@ -38,10 +51,7 @@ export default function ProductsContextProvider ( { children } )
       {
         if ( entries[ 0 ].isIntersecting )
         {
-          setPage( ( prev ) =>
-          {
-            prev + 1;
-          } );
+          setPage( ( prev ) => prev + 1);
         }
       },
       { threshold: 1.0 }
@@ -59,7 +69,7 @@ export default function ProductsContextProvider ( { children } )
         observer.unobserve( lastProductRef.current );
       }
     };
-  }, [ ] );
+  }, [ products ] );
 
   const ctxValue = {
     products,

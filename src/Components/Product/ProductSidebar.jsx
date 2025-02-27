@@ -1,5 +1,6 @@
-import { ChevronDown, Star } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
+import StarRating from "./StarRating";
 
 export default function ProductSidebar ()
 {
@@ -68,14 +69,16 @@ export default function ProductSidebar ()
           </div>
           <div className="coustomer-reviews mt-8">
             <h3 className="font-bold mb-3 text-lg">Coustomer Reviews</h3>
-            <div className="flex items-center">
-              <Star color="#FF9900" fill="#FFCC00" size={ 16 } />
-              <Star color="#FF9900" fill="#FFCC00" size={ 16 } />
-              <Star color="#FF9900" fill="#FFCC00" size={ 16 } />
-              <Star color="#FF9900" fill="#FFCC00" size={ 16 } />
-              <Star color="#FF9900" size={ 16 } />
-              <span className="ms-2">& up</span>
-            </div>
+            {[4,3,2,1].map( ( i ) => {
+              return (
+                <div key={ i } className="flex items-center gap-2 mt-1 cursor-pointer transition-all duration-300 hover:ms-2">
+                  <StarRating rating={ i }/>
+                  <span className="ms-2">
+                    & up
+                  </span>
+                </div>
+              );
+            })}
           </div>
           <div className="brands mt-8">
             <h3 className="font-bold mb-1 text-lg">Brands</h3>

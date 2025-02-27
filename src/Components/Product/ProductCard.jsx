@@ -20,7 +20,7 @@ const ProductCard = forwardRef( ( { product }, ref ) =>
 
   return (
     <div
-      ref={ ref } // ✅ وضع `ref` هنا داخل العنصر الرئيسي
+      ref={ ref } 
       className='
         flex lg:flex-col items-center border-1 border-[#D9D9D9]
         lg:gap-3 lg:justify-start lg:items-start lg:p-3
