@@ -9,6 +9,7 @@ import Cart from "./Components/Cart/Cart";
 import UserProvider from "./context/User.context";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import FilterProductsByCategory from "./pages/FilterProductsByCategory";
+import CartContextProvider from "./context/CartContext";
 
 function App() {
   const routes = createBrowserRouter([
@@ -36,7 +37,9 @@ function App() {
   return (
     <>
       <UserProvider>
-        <RouterProvider router={routes}></RouterProvider>
+        <CartContextProvider>
+          <RouterProvider router={routes}></RouterProvider>
+        </CartContextProvider>
       </UserProvider>
     </>
   );

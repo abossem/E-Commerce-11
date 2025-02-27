@@ -1,7 +1,5 @@
-import axios from "axios";
 import PropTypes from "prop-types";
-import { createContext, useCallback, useEffect, useRef, useState } from "react";
-import { data } from "react-router-dom";
+import { createContext, useEffect, useRef, useState } from "react";
 
 export const ProductsContext = createContext({
   products: [],

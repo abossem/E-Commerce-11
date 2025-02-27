@@ -87,7 +87,7 @@ export default function NavBar() {
               <p className="font-lato flex items-center gap-1">
                 Account & Lists <ChevronDown className="w-4 h-4" />
               </p>
-              <div className="dropdown hidden group-hover:block absolute top-12 -left-3 bg-gray-50 text-primary-black z-[1000] p-4">
+              <div className=" hidden group-hover:block absolute top-12 -left-3 bg-gray-50 text-primary-black z-[1000] p-4">
                 <ul>
                   {token ? (
                     <li onClick={logOut} className="cursor-pointer">
@@ -119,7 +119,10 @@ export default function NavBar() {
         </div>
         <div className=" w-full bg-secondary-dark overflow-x-auto max-sm:mt-3 ">
           <div className=" container px-4 flex items-center overflow-hidden overflow-x-scroll  md:overflow-visible md:overflow-x-visible  text-primary-white gap-1 ">
-            <Link to={"/"} className=" flex items-center justify-center">
+            <Link
+              to={"/products"}
+              className=" flex items-center justify-center"
+            >
               <Menu size={24} />
               All
             </Link>
