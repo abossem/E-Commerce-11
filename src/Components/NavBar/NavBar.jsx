@@ -88,6 +88,9 @@ export default function NavBar() {
                 Account & Lists <ChevronDown className="w-4 h-4" />
               </p>
               <div className=" hidden group-hover:block absolute top-12 -left-3 bg-gray-50 text-primary-black z-[1000] p-4">
+               <div className="bg-primary-white p-4">
+                {token ? <Link className="py-1 px-2 text-primary-white bg-yellow" to={'/products'}>Shop Now</Link> : <Link className="py-1 px-2 text-primary-white bg-yellow" to={'/signup'}>Create Account</Link>}
+               </div>
                 <ul>
                   {token ? (
                     <li onClick={logOut} className="cursor-pointer">
