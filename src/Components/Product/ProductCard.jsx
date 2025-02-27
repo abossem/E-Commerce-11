@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 import { useCartContext } from "../../context/CartContext";
 
 const ProductCard = forwardRef(({ product }, ref) => {
-  console.log({ product });
+  // console.log({ product });
 
   const { addItemToCart } = useCartContext();
   function formatCustomDate(dateString) {

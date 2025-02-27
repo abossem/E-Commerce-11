@@ -1,10 +1,14 @@
 import ProductSidebar from "../Components/Product/ProductSidebar";
 import ProductCard from "../Components/Product/ProductCard";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ProductsContext } from "../context/ProductsContext";
 
 export default function ProductsPage() {
-  const { products, loading, lastProductRef } = useContext(ProductsContext);
+  const { products, loading, lastProductRef, fetchProducts } = useContext(ProductsContext);
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
     <>

@@ -5,23 +5,24 @@ import { ProductsContext } from "../../context/ProductsContext";
 
 export default function ProductSidebar() {
   const [showFilters, setShowFilters] = useState(false);
-  const { getProductsByBrand } = useContext(ProductsContext);
+  const { getProductsByBrand, getProductsByRating, getProductsByPrice } = useContext(ProductsContext);
 
   const brands = [
-    "Samsung",
-    "LG",
-    "Haier",
-    "Daikin",
-    "Godrej",
-    "IFB",
-    "Panasonic",
+    "Apple",
+    "Dell",
+    "Sony",
+    "IKEA",
+    "Nike",
+    "Zara",
+    "MAC"
   ];
+
   const prices = [
     "All",
-    "₹5900 to ₹10,000",
-    "₹10,000 to ₹20,000",
-    "₹20,000 to ₹30,000",
-    "₹30,000 to ₹45,000",
+    "$100 to $200",
+    "$200 to $300",
+    "$300 to $500",
+    "$500 to $1000",
   ];
 
   const toggleFilters = () => {
@@ -73,7 +74,10 @@ export default function ProductSidebar() {
             {[4, 3, 2, 1].map((i) => {
               return (
                 <div
-                  key={i}
+                  key={ i }
+                  onClick={() => {
+                    getProductsByRating(i);
+                  }}
                   className="flex items-center gap-2 mt-1 cursor-pointer transition-all duration-300 hover:ms-2"
                 >
                   <StarRating rating={i} />
@@ -106,9 +110,12 @@ export default function ProductSidebar() {
           </div>
           <div className="Price mt-8">
             <h3 className="font-bold mb-1 text-lg">Price</h3>
-            {prices.map((p, i) => {
+            { prices.map( ( p, i ) =>
+            {
+              p = p.replace( ' to ', '-' );
+              p = p.replace( /\$/g, '' );
               return (
-                <div key={p} className="flex items-center gap-2 mt-1">
+                <div onClick={() => getProductsByPrice(p)} key={p} className="flex items-center gap-2 mt-1">
                   <input type="radio" name="price" id={"p-" + i} />
                   <label
                     htmlFor={"p-" + i}
