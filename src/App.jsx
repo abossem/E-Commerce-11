@@ -6,9 +6,22 @@ import Home from "./Pages/Home";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import ProductsPage from "./Pages/ProductsPage";
 import Cart from "./Components/Cart/Cart";
+import UserProvider from "./context/User.context";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 
 function App() {
   const routes = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>
+      ),
+      children: [
+        { path: "/cart", element: <Cart /> },
+      ],
+    },
     {
       path: "/",
       element: (
@@ -21,12 +34,17 @@ function App() {
         { path: "/login", element: <LoginPage /> },
         { path: "/signup", element: <RegisterPage /> },
         { path: "/products", element: <ProductsPage /> },
-        { path: "/cart", element: <Cart /> },
       ],
     },
+    
   ]);
 
-  return <RouterProvider router={routes}></RouterProvider>;
+  return <>
+  
+  <UserProvider>
+    <RouterProvider router={routes}></RouterProvider>
+  </UserProvider>
+  </>;
 }
 
 export default App;

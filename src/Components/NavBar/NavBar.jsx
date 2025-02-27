@@ -2,8 +2,13 @@ import { Link } from "react-router-dom";
 import Amazon from "../../assets/amazon.png";
 import India from "../../assets/india.png";
 import { MapPin, Search, ShoppingCart, Menu, ChevronDown } from "lucide-react";
+import { useUserContext } from "../../context/User.context";
 
 export default function NavBar() {
+  const {token , userInfo, logOut} = useUserContext() 
+  
+  
+  
   return (
     <>
       <section className="navbar bg-primary-dark">
@@ -58,19 +63,19 @@ export default function NavBar() {
               </select>
             </div>
             <div className="sign-in hidden md:flex flex-col items-start relative group cursor-pointer">
-              <p className="font-lato font-bold">Hello, Sign in</p>
+              <p className="font-lato font-bold">Hello, {token ? <span>{userInfo?.name}</span> : <span>Sign in</span>}</p>
               <p className="font-lato flex items-center gap-1">
                 Account & Lists <ChevronDown className="w-4 h-4" />
               </p>
-              <div className="dropdown hidden group-hover:block absolute top-12 -left-3 bg-gray-50 text-primary-black p-4">
+              <div className="dropdown hidden group-hover:block absolute top-12 -left-3 bg-gray-50 text-primary-black z-[1000] p-4">
                 <ul>
-                  <li>
+                  {token ? <li onClick={logOut} className="cursor-pointer">sign out</li> : <><li>
                     {" "}
                     <Link to={"/login"}>sign in</Link>
                   </li>
                   <li>
                     <Link to={"/signup"}>sign up</Link>
-                  </li>
+                  </li></>}
                 </ul>
               </div>
             </div>
