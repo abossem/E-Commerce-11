@@ -1,9 +1,11 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useUserContext } from "./User.context";
 
 const CartContext = createContext();
 
 export default function CartContextProvider({ children }) {
+  const token = useUserContext();
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const getUserCartItems = async () => {
@@ -12,7 +14,7 @@ export default function CartContextProvider({ children }) {
         "https://e-commerce-11-api.vercel.app/api/api/cart",
         {
           headers: {
-            Authorization: `Bearer 3|s6YifE6Pd0OgAq7cTuM6zgFFfG9drkYXBeZsnV562b4f156c`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
