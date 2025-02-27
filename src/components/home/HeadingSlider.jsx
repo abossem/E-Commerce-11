@@ -1,23 +1,18 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
+  A11y,
+  Autoplay,
   Navigation,
   Pagination,
   Scrollbar,
-  A11y,
-  Autoplay,
 } from "swiper/modules";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-
-// const products = [
-//   { imageURL: "/heading-slider.png", category: "food" },
-//   { imageURL: "/heading-slider.png", category: "electronics" },
-//   { imageURL: "/heading-slider.png", category: "fashion" },
-// ];
+import Loading from "../loading/Loading";
 
 export default function HeadingSlider({ products, isLoading }) {
   return (
@@ -44,11 +39,7 @@ export default function HeadingSlider({ products, isLoading }) {
         loop={true}
         className="rounded-md overflow-hidden"
       >
-        {isLoading && (
-          <p className="h-full w-screen flex justify-center items-center text-red">
-            Loading.....
-          </p>
-        )}
+        {isLoading && <Loading />}
 
         {products.map((category, i) => (
           <SwiperSlide key={i}>
