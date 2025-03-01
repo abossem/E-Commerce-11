@@ -76,31 +76,26 @@ export default function ProductsContextProvider({ children }) {
     setLoading( false );
   }
   
-
-  useEffect(() => {
-    if ( page > 7 ) return;
-    async function fetchProducts ()
+  async function fetchProducts ()
+  {
+    setLoading( true );
+    const url = "https://e-commerce-11-api.vercel.app/api/api/products?page=";
+    const res = await fetch( url + page );
+    const { data } = await res.json();
+    setProducts( ( prev ) =>
     {
-      setLoading( true );
-      const url = "https://e-commerce-11-api.vercel.app/api/api/products?page=";
-      const res = await fetch( url + page );
-      const { data } = await res.json();
-      setProducts( ( prev ) =>
+      const uniqueProducts = [ ...prev, ...data ].reduce( ( acc, item ) =>
       {
-        const uniqueProducts = [ ...prev, ...data ].reduce( ( acc, item ) =>
+        if ( !acc.some( ( p ) => p.id === item.id ) )
         {
-          if ( !acc.some( ( p ) => p.id === item.id ) )
-          {
-            acc.push( item );
-          }
-          return acc;
-        }, [] );
-        return uniqueProducts;
-      } );
-      setLoading( false );
-    };
-    fetchProducts();
-  }, [page]);
+          acc.push( item );
+        }
+        return acc;
+      }, [] );
+      return uniqueProducts;
+    } );
+    setLoading( false );
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -128,6 +123,8 @@ export default function ProductsContextProvider({ children }) {
     lastProductRef,
     loading,
     filteredProducts,
+    page,
+    fetchProducts,
     getProductsByBrand,
     getProductsByRating,
     getProductsByPrice,

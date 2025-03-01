@@ -1,6 +1,6 @@
 import ProductSidebar from "../Components/Product/ProductSidebar";
 import ProductCard from "../Components/Product/ProductCard";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ProductsContext } from "../context/ProductsContext";
 import StaticLoading from "../Components/loading/StaticLoading";
 
@@ -10,7 +10,15 @@ export default function ProductsPage ()
     products,
     loading,
     lastProductRef,
+    fetchProducts,
+    page
   } = useContext( ProductsContext );
+
+  useEffect( () =>
+  {
+    if ( page > 7 ) return;
+    fetchProducts();
+  }, [ page ] );
 
 
   return (
