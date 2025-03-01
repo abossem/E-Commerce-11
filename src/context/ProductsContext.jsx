@@ -7,74 +7,98 @@ export const ProductsContext = createContext({
 });
 
 export default function ProductsContextProvider({ children }) {
+  const [ filteredProducts, setFilteredProducts ] = useState([]);
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const lastProductRef = useRef( null );
-  
 
-  async function getProductsByBrand(brandName) {
+  async function getProductsByBrand ( brandName )
+  {
+    setFilteredProducts( [] );
     const options = {
       url: `https://e-commerce-11-api.vercel.app/api/api/products/brand/${brandName}`,
       method: "GET",
     };
+    setLoading(true);
     let { data } = await axios.request(options);
     if (data.status == "success") {
-      setProducts(data.data);
+      setFilteredProducts(data.data);
     }
+    setLoading(false);
+  }
+
+  async function getProductsByCategory ( categoryName )
+  {
+    setFilteredProducts( [] );
+    const options = {
+      url: `https://e-commerce-11-api.vercel.app/api/api/products/category/${categoryName}`,
+      method: "GET",
+    };
+    setLoading( true );
+    let { data } = await axios.request(options);
+    if (data.status == "success") {
+      setFilteredProducts(data.data);
+    }
+    setLoading( false );
   }
 
   async function getProductsByRating ( rate )
   {
+    setFilteredProducts( [] );
     const options = {
       url: `https://e-commerce-11-api.vercel.app/api/api/products/rating/${ rate }`,
       method: "GET",
     };
+    setLoading( true );
     let { data } = await axios.request( options );
     if ( data.status == "success" )
     {
       // this is work put take alot of time
-      setProducts( Object.values(data.data) );
+      setFilteredProducts( Object.values(data.data) );
     }
+    setLoading( false );
   }
 
   async function getProductsByPrice ( range )
   {
-    console.log( range );
+    setFilteredProducts( [] );
     const options = {
       url: `https://e-commerce-11-api.vercel.app/api/api/products/price/${ range }`,
       method: "GET",
     };
+    setLoading( true );
     let { data } = await axios.request( options );
     if ( data.status == "success" )
     {
-      setProducts( data.data );
+      setFilteredProducts( data.data );
     }
+    setLoading( false );
   }
   
-  async function fetchProducts ()
-  {
-    setLoading( true );
-    const url = "https://e-commerce-11-api.vercel.app/api/api/products?page=";
-    const res = await fetch( url + page );
-    const { data } = await res.json();
-    setProducts( ( prev ) =>
-    {
-      const uniqueProducts = [ ...prev, ...data ].reduce( ( acc, item ) =>
-      {
-        if ( !acc.some( ( p ) => p.id === item.id ) )
-        {
-          acc.push( item );
-        }
-        return acc;
-      }, [] );
-      return uniqueProducts;
-    } );
-    setLoading( false );
-  };
 
   useEffect(() => {
-    if (page > 7) return;
+    if ( page > 7 ) return;
+    async function fetchProducts ()
+    {
+      setLoading( true );
+      const url = "https://e-commerce-11-api.vercel.app/api/api/products?page=";
+      const res = await fetch( url + page );
+      const { data } = await res.json();
+      setProducts( ( prev ) =>
+      {
+        const uniqueProducts = [ ...prev, ...data ].reduce( ( acc, item ) =>
+        {
+          if ( !acc.some( ( p ) => p.id === item.id ) )
+          {
+            acc.push( item );
+          }
+          return acc;
+        }, [] );
+        return uniqueProducts;
+      } );
+      setLoading( false );
+    };
     fetchProducts();
   }, [page]);
 
@@ -103,10 +127,11 @@ export default function ProductsContextProvider({ children }) {
     products,
     lastProductRef,
     loading,
+    filteredProducts,
     getProductsByBrand,
     getProductsByRating,
     getProductsByPrice,
-    fetchProducts
+    getProductsByCategory
   };
 
   return (

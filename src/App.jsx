@@ -6,7 +6,7 @@ import Home from "./Pages/Home";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import ProductsPage from "./Pages/ProductsPage";
 import Cart from "./Components/Cart/Cart";
-import FilterProductsByCategory from "./pages/FilterProductsByCategory";
+import FilterProductsByCategory from "./Pages/FilteredProducts";
 import ProductDetails from "./pages/ProductDetails";
 import ErrorPage from "./Pages/ErrorPage";
 
@@ -26,7 +26,7 @@ function App() {
         { path: "/signup", element: <RegisterPage /> },
         { path: "/products", element: <ProductsPage /> },
         {
-          path: "/products/category/:category",
+          path: "/products/:type/:value",
           element: <FilterProductsByCategory />,
         },
         { path: "/cart", element: <Cart /> },

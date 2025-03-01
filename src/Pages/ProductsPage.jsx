@@ -1,14 +1,17 @@
 import ProductSidebar from "../Components/Product/ProductSidebar";
 import ProductCard from "../Components/Product/ProductCard";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ProductsContext } from "../context/ProductsContext";
+import StaticLoading from "../Components/loading/StaticLoading";
 
-export default function ProductsPage() {
-  const { products, loading, lastProductRef, fetchProducts } = useContext(ProductsContext);
+export default function ProductsPage ()
+{
+  const {
+    products,
+    loading,
+    lastProductRef,
+  } = useContext( ProductsContext );
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
 
   return (
     <>
@@ -29,7 +32,7 @@ export default function ProductsPage() {
                 />
               );
             })}
-          {loading && <p>Loading more products...</p>}
+          {loading && <StaticLoading/>}
         </div>
       </div>
     </>
