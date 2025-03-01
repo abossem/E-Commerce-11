@@ -5,7 +5,7 @@ import {
   Truck,
   Shield,
   CreditCard,
-  Search,
+  // Search,
   Info,
   ChevronDown,
 } from "lucide-react";
@@ -30,6 +30,7 @@ const Button = React.forwardRef(
     );
   }
 );
+
 
 // Custom Select components
 const Select = React.forwardRef(
@@ -429,3 +430,7 @@ export default function ProductDetails({ product }) {
     </div>
   );
 }
+
+Button.displayName = "Button";
+Select.displayName = "Select";
+SelectItem.displayName = "SelectItem";

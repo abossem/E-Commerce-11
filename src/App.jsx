@@ -8,6 +8,7 @@ import ProductsPage from "./Pages/ProductsPage";
 import Cart from "./Components/Cart/Cart";
 import FilterProductsByCategory from "./pages/FilterProductsByCategory";
 import ProductDetails from "./pages/ProductDetails";
+import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
   const routes = createBrowserRouter([
@@ -18,6 +19,7 @@ function App() {
           <Layout />
         </GuestRoute>
       ),
+      errorElement: <ErrorPage />,
       children: [
         { index: true, element: <Home /> },
         { path: "/login", element: <LoginPage /> },

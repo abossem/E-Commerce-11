@@ -78,6 +78,7 @@ ProductCard.displayName = "ProductCard";
 
 ProductCard.propTypes = {
   product: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     images: PropTypes.array.isRequired,
     reviews_avg: PropTypes.number.isRequired,
