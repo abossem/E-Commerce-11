@@ -48,15 +48,13 @@
 button {
   cursor: pointer;
 }
-@keyframes type
-{
-  from
-  {
+
+@keyframes type {
+  from {
     box-shadow: inset -3px 0px 0px #888;
   }
 
-  to
-  {
+  to {
     box-shadow: inset -3px 0px 0px transparent;
   }
 }
