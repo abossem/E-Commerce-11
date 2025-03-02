@@ -25,7 +25,7 @@ const ProductCard = forwardRef(({ product }, ref) => {
     <div
       ref={ref}
       className="
-        flex lg:flex-col items-center border-1 border-[#D9D9D9]
+        flex lg:flex-col self-stretch items-center border-1 border-[#D9D9D9]
         lg:gap-3 lg:justify-start lg:items-start lg:p-3 mb-7
       "
     >

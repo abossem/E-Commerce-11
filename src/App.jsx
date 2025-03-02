@@ -6,10 +6,14 @@ import Home from "./Pages/Home";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import ProductsPage from "./Pages/ProductsPage";
 import Cart from "./Components/Cart/Cart";
-import FilterProductsByCategory from "./Pages/FilteredProducts";
+import FilteredProducts from "./Pages/FilteredProducts";
 import ProductDetails from "./pages/ProductDetails";
 import ErrorPage from "./Pages/ErrorPage";
 import Orders from "./pages/Orders/Orders";
+import UserProvider from "./context/User.context";
+import HomeContextProvider from "./context/homeContext";
+import CartContextProvider from "./context/CartContext";
+import ProductsContextProvider from "./context/ProductsContext";
 
 function App() {
   const routes = createBrowserRouter([
@@ -28,7 +32,7 @@ function App() {
         { path: "/products", element: <ProductsPage /> },
         {
           path: "/products/:type/:value",
-          element: <FilterProductsByCategory />,
+          element: <FilteredProducts />,
         },
         { path: "/cart", element: <Cart /> },
         {
@@ -42,7 +46,15 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={routes}></RouterProvider>
+      <UserProvider>
+        <HomeContextProvider>
+          <CartContextProvider>
+            <ProductsContextProvider>
+              <RouterProvider router={routes}></RouterProvider>
+            </ProductsContextProvider>
+          </CartContextProvider>
+        </HomeContextProvider>
+      </UserProvider>
     </>
   );
 }

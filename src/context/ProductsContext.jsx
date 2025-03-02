@@ -76,20 +76,20 @@ export default function ProductsContextProvider({ children }) {
     setLoading( false );
   }
   
-  async function fetchProducts ()
+  async function fetchProducts (page=1)
   {
     setLoading( true );
-    const url = "https://e-commerce-11-api.vercel.app/api/api/products?page=";
-    const res = await fetch( url + page );
-    const { data } = await res.json();
+    const options = {
+      url: `https://e-commerce-11-api.vercel.app/api/api/products?page=${ page }`,
+      method: "GET",
+    };
+    let { data } = await axios.request( options );
+    data = data.data;// ;)
     setProducts( ( prev ) =>
     {
       const uniqueProducts = [ ...prev, ...data ].reduce( ( acc, item ) =>
       {
-        if ( !acc.some( ( p ) => p.id === item.id ) )
-        {
-          acc.push( item );
-        }
+        if ( !acc.some( ( p ) => p.id === item.id ) ) acc.push( item );
         return acc;
       }, [] );
       return uniqueProducts;

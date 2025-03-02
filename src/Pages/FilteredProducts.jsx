@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import ProductSidebar from "../Components/Product/ProductSidebar";
 import { useContext, useEffect } from "react";
-import { ProductsContext } from "../context/ProductsContext";
 import ProductCard from "../Components/Product/ProductCard";
 import StaticLoading from "../Components/loading/StaticLoading";
+import { ProductsContext } from "../context/ProductsContext";
 
 function FilteredProducts ()
 {
@@ -34,7 +34,7 @@ function FilteredProducts ()
 
       <div
         className=" 
-          lg:col-span-4 grid lg:grid-cols-3 xl:grid-cols-4 gap-3
+          lg:col-span-4 grid lg:grid-cols-3 xl:grid-cols-4 gap-3 content-start
           "
       >
         { filteredProducts &&
@@ -43,7 +43,7 @@ function FilteredProducts ()
           } ) }
         { loading && <StaticLoading /> }
       </div>
-    </div>
+      </div>
   );
 }
 

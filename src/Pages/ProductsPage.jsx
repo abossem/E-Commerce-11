@@ -17,7 +17,7 @@ export default function ProductsPage ()
   useEffect( () =>
   {
     if ( page > 7 ) return;
-    fetchProducts();
+    fetchProducts( page );
   }, [ page ] );
 
 
@@ -27,7 +27,7 @@ export default function ProductsPage ()
         <ProductSidebar />
         <div
           className=" 
-      lg:col-span-4 grid lg:grid-cols-3 xl:grid-cols-4 gap-3
+      lg:col-span-4 grid lg:grid-cols-3 xl:grid-cols-4 gap-3 
       "
         >
           {products &&
