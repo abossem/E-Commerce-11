@@ -14,6 +14,7 @@ import UserProvider from "./context/User.context";
 import HomeContextProvider from "./context/homeContext";
 import CartContextProvider from "./context/CartContext";
 import ProductsContextProvider from "./context/ProductsContext";
+import OrderMethodPage from "./Pages/Orders/OrderMethodPage";
 
 function App() {
   const routes = createBrowserRouter([
@@ -40,6 +41,7 @@ function App() {
           element: <ProductDetails />,
         },
         { path: "/orders", element: <Orders /> },
+        { path: "/order-method", element: <OrderMethodPage /> },
       ],
     },
   ]);
