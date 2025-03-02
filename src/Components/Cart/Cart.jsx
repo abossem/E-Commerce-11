@@ -7,24 +7,36 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { IoInformation } from "react-icons/io5";
 import axios from "axios";
 export default function Cart() {
-  const { cartItems } = useCartContext();
+  const { cartItems, setCartItems } = useCartContext();
   const { token } = useUserContext();
   const navigate = useNavigate();
-  const addOrder = async (orderInfo) => {
+  const addOrder = async () => {
+    const options = {
+      url: `https://e-commerce-11-api.vercel.app/api/api/orders`,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: {
+        cart_id: cartItems[0].user_id,
+        total_price: `${cartItems?.reduce(
+          (acc, item) =>
+            Number((acc + item.product.price * item.quantity).toFixed(0)),
+          0
+        )}`,
+        payment_method: "cash",
+      },
+    };
     try {
-      await axios.post(
-        "https://e-commerce-11-api.vercel.app/api/api/orders",
-        { ...orderInfo },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      navigate("/orders");
+      let { data } = await axios.request(options);
+      if (data.status == "success") {
+        setCartItems(null);
+        setTimeout(() => {
+          navigate("/orders");
+        }, 1000);
+      }
     } catch (error) {
-      alert(error.response.data.message);
-      console.log("🚀 ~ addOrder ~ error:", error);
+      console.log(error);
     }
   };
   if (token) {
