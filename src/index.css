@@ -46,7 +46,7 @@
 }
 
 button {
-  cursor: pointer;
+  @apply cursor-pointer
 }
 
 @keyframes type {
