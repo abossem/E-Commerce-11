@@ -70,29 +70,6 @@ export default function Orders() {
                         )}
                       </div>
                     </header>
-                    <div className="grid md:gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
-                      {/* {order[1].map((product) => (
-                        <div
-                          key={product.id}
-                          className="product-item overflow-hidden border-solid border-2 border-gray-400 border-opacity-30 rounded-lg"
-                        >
-                          <div className="p-3">
-                            <h3 className="text-lg font-semibold text-gray-500 line-clamp-2">
-                              <Link to={`/product/${product.id}`}>
-                                {product.product.title}
-                              </Link>
-                            </h3>
-                            <div className="flex mt-2 justify-between items-center">
-                              <p>
-                                <span className="font-bold">Count: </span>
-                                {product.count}
-                              </p>
-                              <span>{product.price} L.E</span>
-                            </div>
-                          </div>
-                        </div>
-                      ))} */}
-                    </div>
                     <p className="text-lg mt-2">
                       Your Total order price is{" "}
                       <span className="text-yellow-500 font-bold mx-1">
