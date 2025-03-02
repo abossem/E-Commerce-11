@@ -10,6 +10,7 @@ import FilterProductsByCategory from "./Pages/FilteredProducts";
 import ProductDetails from "./pages/ProductDetails";
 import ErrorPage from "./Pages/ErrorPage";
 import Orders from "./pages/Orders/Orders";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const routes = createBrowserRouter([
@@ -42,6 +43,7 @@ function App() {
 
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       <RouterProvider router={routes}></RouterProvider>
     </>
   );

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const UserContext = createContext();
 
@@ -38,9 +39,11 @@ export default function UserProvider({ children }) {
       if (data.status == "success") {
         setToken(null);
         localStorage.removeItem("token");
+        toast.success("You have logged out successfully!");
       }
     } catch (error) {
-      console.log(error);
+      toast.error("Something went wrong!");
+      console.error(error);
     }
   }
 

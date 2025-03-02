@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import HeadingSlider from "../components/home/HeadingSlider";
 import ProductsCard from "../components/home/ProductsCard";
 import Slider from "../components/home/Slider";
