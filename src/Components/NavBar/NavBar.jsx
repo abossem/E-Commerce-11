@@ -88,40 +88,81 @@ export default function NavBar() {
                 Account & Lists <ChevronDown className="w-4 h-4" />
               </p>
               <div className=" hidden group-hover:block absolute top-12 -left-1/2 rounded-md bg-gray-50 text-primary-black z-[1000] p-4 ">
-               <div className="flex flex-col justify-center items-center ">
-                {token ? <Link className="py-1 px-2 text-primary-white bg-yellow w-fit flex mb-4 rounded-md hover:bg-amber-300 " to={'/products'}>Shop Now</Link> : <Link className="py-1 px-2 text-primary-white bg-yellow w-fit flex mb-4 rounded-md hover:bg-amber-300" to={'/signup'}>Create Account</Link>}
+                <div className="flex flex-col justify-center items-center ">
+                  {token ? (
+                    <Link
+                      className="py-1 px-2 text-primary-white bg-yellow w-fit flex mb-4 rounded-md hover:bg-amber-300 "
+                      to={"/products"}
+                    >
+                      Shop Now
+                    </Link>
+                  ) : (
+                    <Link
+                      className="py-1 px-2 text-primary-white bg-yellow w-fit flex mb-4 rounded-md hover:bg-amber-300"
+                      to={"/signup"}
+                    >
+                      Create Account
+                    </Link>
+                  )}
 
-                <div className="flex items-start gap-10">
-                <ul className="w-[80px]">
-                  <h3 className="text-xl font-bold">Account </h3>
-                  {token ?
-                    <li onClick={logOut} className="cursor-pointer py-1 px-2 text-primary-white bg-yellow w-fit flex mb-4 rounded-md text-xs hover:bg-yellow-300">
-                      sign out
-                    </li> : <li><Link className="cursor-pointer py-1 px-2 text-primary-white bg-yellow w-fit flex mb-4 rounded-md text-xs hover:bg-yellow-300" to={'/login'}>Log In</Link></li>
-                  
-                  }
-                </ul>
-               <div className="flex flex-col w-[150px]">
-                <h3 className="text-xl font-bold">Your Account</h3>
-                <ul className="flex flex-col gap-2 pl-1">
-                  <li  className="cursor-pointer hover:text-yellow text-xs font-light">your account</li>
-                  <li  className="cursor-pointer hover:text-yellow text-xs font-light">your orders</li>
-                  <li  className="cursor-pointer hover:text-yellow text-xs font-light">your list</li>
-                  <li  className="cursor-pointer hover:text-yellow text-xs font-light">your addresses</li>
-                  <li  className="cursor-pointer hover:text-yellow text-xs font-light">your recommendations</li>
-                  <li  className="cursor-pointer hover:text-yellow text-xs font-light">your subscribe & save items</li>
-                  <li  className="cursor-pointer hover:text-yellow text-xs font-light">your seller account</li>
-                </ul>
-               </div>
+                  <div className="flex items-start gap-10">
+                    <ul className="w-[80px]">
+                      <h3 className="text-xl font-bold">Account </h3>
+                      {token ? (
+                        <li
+                          onClick={logOut}
+                          className="cursor-pointer py-1 px-2 text-primary-white bg-yellow w-fit flex mb-4 rounded-md text-xs hover:bg-yellow-300"
+                        >
+                          sign out
+                        </li>
+                      ) : (
+                        <li>
+                          <Link
+                            className="cursor-pointer py-1 px-2 text-primary-white bg-yellow w-fit flex mb-4 rounded-md text-xs hover:bg-yellow-300"
+                            to={"/login"}
+                          >
+                            Log In
+                          </Link>
+                        </li>
+                      )}
+                    </ul>
+                    <div className="flex flex-col w-[150px]">
+                      <h3 className="text-xl font-bold">Your Account</h3>
+                      <ul className="flex flex-col gap-2 pl-1">
+                        <li className="cursor-pointer hover:text-yellow text-xs font-light">
+                          your account
+                        </li>
+                        <li className="cursor-pointer hover:text-yellow text-xs font-light">
+                          <Link to={"/orders"}>your orders</Link>
+                        </li>
+                        <li className="cursor-pointer hover:text-yellow text-xs font-light">
+                          your list
+                        </li>
+                        <li className="cursor-pointer hover:text-yellow text-xs font-light">
+                          your addresses
+                        </li>
+                        <li className="cursor-pointer hover:text-yellow text-xs font-light">
+                          your recommendations
+                        </li>
+                        <li className="cursor-pointer hover:text-yellow text-xs font-light">
+                          your subscribe & save items
+                        </li>
+                        <li className="cursor-pointer hover:text-yellow text-xs font-light">
+                          your seller account
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-               </div>
-                
               </div>
             </div>
-            <div className="orders hidden md:flex flex-col justify-center items-start ">
+            <Link
+              to={"/orders"}
+              className="orders hidden md:flex flex-col justify-center items-start "
+            >
               <span className="capitalize font-lato">returns &</span>
               <p className="capitalize font-lato font-bold">Orders</p>
-            </div>
+            </Link>
             <Link to={"/cart"} className="cart flex items-center gap-2  ">
               <ShoppingCart className="sm:w-[50px] sm:h-[50px] md:w-[20px] md:h-[20px] lg:w-[40px] lg:h-[40px]" />
               <span className="font-lato font-bold hidden lg:flex">Cart</span>
