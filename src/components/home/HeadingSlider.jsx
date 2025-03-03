@@ -1,4 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Link } from 'react-router-dom';
 import {
   A11y,
   Autoplay,
@@ -43,7 +44,7 @@ export default function HeadingSlider({ products, isLoading }) {
 
         {products.map((category, i) => (
           <SwiperSlide key={i}>
-            <a href={`/Products/${category.name}`}>
+            <a href={ `/products/category/${ category.sub_categories.at( 0 ).name}`}>
               <img
                 src={category.sub_categories.at(0).image}
                 alt={category.sub_categories.at(0).name}

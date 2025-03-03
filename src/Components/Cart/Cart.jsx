@@ -10,6 +10,7 @@ export default function Cart() {
   const { cartItems, setCartItems } = useCartContext();
   const { token } = useUserContext();
   const navigate = useNavigate();
+  console.log(cartItems)
   const addOrder = async () => {
     const options = {
       url: `https://e-commerce-11-api.vercel.app/api/api/orders`,
@@ -18,7 +19,7 @@ export default function Cart() {
         Authorization: `Bearer ${token}`,
       },
       data: {
-        cart_id: cartItems[0].user_id,
+        cart_id: cartItems?.id,
         total_price: `${cartItems?.reduce(
           (acc, item) =>
             Number((acc + item.product.price * item.quantity).toFixed(0)),
@@ -103,7 +104,7 @@ export default function Cart() {
             <button
               onClick={() =>
                 addOrder({
-                  cart_id: 1,
+                  cart_id: cartItems?.id,
                   total_price: `${cartItems?.reduce(
                     (acc, item) =>
                       Number(

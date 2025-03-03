@@ -225,7 +225,7 @@ export default function ProductDetails() {
               <div className="border-b border-gray-200 my-4" />
 
               <div className="flex items-baseline mb-4">
-                <span className="text-sm">SAR</span>
+                <span className="text-sm">USD</span>
                 <span className="text-3xl font-medium mx-1">
                   {Math.floor(product.price)}
                 </span>

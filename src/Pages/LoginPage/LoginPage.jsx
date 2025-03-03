@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useUserContext } from "../../context/User.context";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { object, string } from "yup";
 import axios from "axios";
 
@@ -139,11 +139,11 @@ const passwordRegex =
             <div className="absolute right-0 w-1/3 h-[1px] bg-gray-100 bottom-1/2 translate-y-1/2"></div>
           </div>
 
-          <a
-           
+          <Link 
+            to="/signup"
             className="w-full block text-center p-4 transition-all  mt-2 cursor-pointer border border-gray-400 py-2 rounded hover:bg-gray-200">
             Create your Amazon account
-          </a>
+          </Link>
         </div>
       </div>
       <div className="w-full flex justify-center border-t pt-3 border-gray-100 items-center mt-8">
