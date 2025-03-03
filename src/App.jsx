@@ -3,7 +3,6 @@ import LoginPage from "./Pages/LoginPage/LoginPage";
 import GuestRoute from "./Components/GuestRoute/GuestRoute";
 import Layout from "./Components/Layout/Layout";
 import Home from "./Pages/Home";
-import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import ProductsPage from "./Pages/ProductsPage";
 import Cart from "./Components/Cart/Cart";
 import FilteredProducts from "./Pages/FilteredProducts";
@@ -16,6 +15,7 @@ import CartContextProvider from "./context/CartContext";
 import ProductsContextProvider from "./context/ProductsContext";
 import OrderMethodPage from "./Pages/Orders/OrderMethodPage";
 import { Toaster } from "react-hot-toast";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 function App() {
   const routes = createBrowserRouter([
@@ -49,7 +49,7 @@ function App() {
 
   return (
     <>
-      <Toaster position="bottom-right" reverseOrder={false} />
+      <Toaster position="top-left" reverseOrder={false} />
       <UserProvider>
         <HomeContextProvider>
           <CartContextProvider>

@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import {
   A11y,
   Autoplay,
@@ -8,12 +8,12 @@ import {
   Scrollbar,
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Loading from "../loading/Loading";
 
 // import "swiper/css";
 // import "swiper/css/navigation";
 // import "swiper/css/pagination";
 // import "swiper/css/scrollbar";
-import Loading from "../loading/Loading";
 
 export default function HeadingSlider({ products, isLoading }) {
   return (
@@ -44,7 +44,9 @@ export default function HeadingSlider({ products, isLoading }) {
 
         {products.map((category, i) => (
           <SwiperSlide key={i}>
-            <a href={ `/products/category/${ category.sub_categories.at( 0 ).name}`}>
+            <a
+              href={`/products/category/${category.sub_categories.at(0).name}`}
+            >
               <img
                 src={category.sub_categories.at(0).image}
                 alt={category.sub_categories.at(0).name}
