@@ -113,7 +113,7 @@ export default function NavBar() {
                           onClick={logOut}
                           className="cursor-pointer py-1 px-2 text-primary-white bg-yellow w-fit flex mb-4 rounded-md text-xs hover:bg-yellow-300"
                         >
-                          sign out
+                          Log out
                         </li>
                       ) : (
                         <li>
