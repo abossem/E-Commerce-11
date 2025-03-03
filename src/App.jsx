@@ -38,7 +38,7 @@ function App() {
         },
         { path: "/cart", element: <Cart /> },
         {
-          path: "/product/:id",
+          path: "/product/:productId",
           element: <ProductDetails />,
         },
         { path: "/orders", element: <Orders /> },
@@ -49,7 +49,7 @@ function App() {
 
   return (
     <>
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="bottom-right" reverseOrder={false} />
       <UserProvider>
         <HomeContextProvider>
           <CartContextProvider>
