@@ -8,9 +8,10 @@ import { useUserContext } from "../../context/User.context";
 import toast, { Toaster } from "react-hot-toast";
 
 export default function RegisterPage() {
-  let navigate = useNavigate();
-  const { setToken } = useUserContext();
-  const [accountError, setAccountError] = useState(null);
+  let navigate = useNavigate()
+  const {setToken} = useUserContext();
+  const [ accountError, setAccountError ] = useState( null );
+  const [ loading, setLoding ] = useState( false );
   const passwordRegex =
     /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
 
@@ -29,32 +30,34 @@ export default function RegisterPage() {
   });
 
   async function onSubmit(values) {
-    try {
-      const options = {
-        url: "https://e-commerce-11-api.vercel.app/api/api/register",
-        method: "POST",
-        data: values,
-      };
-      let { data } = await axios.request(options);
-
-      if (data.status == "success") {
-        setToken(data.data.token);
-        console.log(data.data.user);
-
-        console.log("Triggering toast...");
-        toast.success("You have registered successfully!");
-
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
-        localStorage.setItem("token", data.data.token);
-        console.log(data);
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error("Something went wrong!");
-      setAccountError(error.response.data.message);
+   try {
+    const options = {
+      url:'https://e-commerce-11-api.vercel.app/api/api/register',
+      method:'POST',
+      data: values
+     }
+     setLoding( true );
+     let {data} = await axios.request(options)
+    if (data.status == 'success') {
+      setToken( data.data.token )
+      toast.success( 'you have registered successfully' );
+      console.log(data.data.user);
+      setTimeout( () =>
+      {
+        navigate('/')
+        setLoding( false );
+      }, 0);
+      localStorage.setItem('token',data.data.token)
+      console.log(data);
     }
+     
+   } catch (error) {
+     console.log( error );
+     toast.error('somthing went wronge')
+    setAccountError(error.response.data.message);
+
+    
+   }
   }
 
   let formik = useFormik({
@@ -145,6 +148,7 @@ export default function RegisterPage() {
 
             <button
               type="submit"
+              disabled={loading}
               className="w-full bg-yellow-400 text-black py-2 rounded-md font-medium"
             >
               Sign up
@@ -160,7 +164,7 @@ export default function RegisterPage() {
         <div className="mt-4 text-sm">
           <p className="flex items-center gap-1">
             <span className="text-[19px]"> Already have an account? </span>
-            <Link to={"/login"} className="text-blue flex items-center gap-1">
+            <Link to={"/login"} className={`text-blue flex items-center gap-1 `}>
               Sign in
               <IoMdArrowDropright />
             </Link>

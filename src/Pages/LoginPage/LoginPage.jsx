@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useUserContext } from "../../context/User.context";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { object, string } from "yup";
 import axios from "axios";
 import toast from "react-hot-toast";
