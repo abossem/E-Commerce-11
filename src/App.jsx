@@ -7,7 +7,7 @@ import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import ProductsPage from "./Pages/ProductsPage";
 import Cart from "./Components/Cart/Cart";
 import FilteredProducts from "./Pages/FilteredProducts";
-import ProductDetails from "./pages/ProductDetails";
+import ProductDetails from "./Pages/ProductDetails";
 import ErrorPage from "./Pages/ErrorPage";
 import Orders from "./pages/Orders/Orders";
 import UserProvider from "./context/User.context";
