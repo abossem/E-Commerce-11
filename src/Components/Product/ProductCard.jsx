@@ -30,11 +30,14 @@ const ProductCard = forwardRef(({ product }, ref) => {
       "
     >
       <div className="img w-[40%] max-h-[300px] lg:w-full">
+        <Link
+          to={ `/product/${ product.id }` }>
         <img
           src={product.images[0]}
           alt={product.name}
           className="h-full md:h-[200px] mx-auto object-cover "
-        />
+          />
+        </Link>
       </div>
       <div className="details w-[60%] lg:w-full p-5 flex flex-col gap-1">
         <Link
@@ -62,7 +65,9 @@ const ProductCard = forwardRef(({ product }, ref) => {
           </span>
         </div>
         <button
-          onClick={() => {
+          onClick={ () =>
+          {
+            
             addItemToCart(product);
           }}
           className="w-full bg-amber-300 rounded-4xl py-3 text-sm mt-1 cursor-pointer hover:bg-yellow-300"

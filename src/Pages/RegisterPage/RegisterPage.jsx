@@ -5,6 +5,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { object, string } from "yup";
 import { useUserContext } from "../../context/User.context";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function RegisterPage() {
   let navigate = useNavigate()
@@ -38,7 +39,8 @@ export default function RegisterPage() {
      setLoding( true );
      let {data} = await axios.request(options)
     if (data.status == 'success') {
-      setToken(data.data.token)
+      setToken( data.data.token )
+      toast.success( 'you have registered successfully' );
       console.log(data.data.user);
       setTimeout( () =>
       {
@@ -50,7 +52,8 @@ export default function RegisterPage() {
     }
      
    } catch (error) {
-    console.log(error);
+     console.log( error );
+     toast.error('somthing went wronge')
     setAccountError(error.response.data.message);
 
     
@@ -58,16 +61,17 @@ export default function RegisterPage() {
   }
 
   let formik = useFormik({
-    initialValues:{
-    name: "",
-    email: "",
-    password: ""
+    initialValues: {
+      name: "",
+      email: "",
+      password: "",
     },
-    validationSchema:schema,
+    validationSchema: schema,
     onSubmit,
-  })
+  });
   return (
     <div className="flex justify-center flex-col items-center min-h-screen w-full mt-6">
+      <Toaster />
       <div className="w-full max-w-md bg-white p-6 rounded-md border border-gray-100">
         <div className="flex justify-center mb-4">
           <img
@@ -95,13 +99,15 @@ export default function RegisterPage() {
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
               {formik.errors.name && formik.touched.name && (
-            <p className="text-red-400 mt-1 text-sm">*{formik.errors.name}</p>
-          )}
+                <p className="text-red-400 mt-1 text-sm">
+                  *{formik.errors.name}
+                </p>
+              )}
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700">
-               Enter Your Email
+                Enter Your Email
               </label>
               <input
                 type="email"
@@ -112,11 +118,13 @@ export default function RegisterPage() {
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
               {formik.errors.email && formik.touched.email && (
-            <p className="text-red-400 mt-1 text-sm">*{formik.errors.email}</p>
-          )}
-          {accountError && (
-            <p className="text-red-400 mt-1 text-sm">*{accountError}</p>
-          )}
+                <p className="text-red-400 mt-1 text-sm">
+                  *{formik.errors.email}
+                </p>
+              )}
+              {accountError && (
+                <p className="text-red-400 mt-1 text-sm">*{accountError}</p>
+              )}
             </div>
 
             <div>
@@ -132,8 +140,10 @@ export default function RegisterPage() {
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
               {formik.errors.password && formik.touched.password && (
-            <p className="text-red-400 mt-1 text-sm">*{formik.errors.password}</p>
-          )}
+                <p className="text-red-400 mt-1 text-sm">
+                  *{formik.errors.password}
+                </p>
+              )}
             </div>
 
             <button
@@ -141,7 +151,7 @@ export default function RegisterPage() {
               disabled={loading}
               className="w-full bg-yellow-400 text-black py-2 rounded-md font-medium"
             >
-             Sign up
+              Sign up
             </button>
           </div>
         </form>

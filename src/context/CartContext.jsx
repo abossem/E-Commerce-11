@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useUserContext } from "./User.context";
+import toast from "react-hot-toast";
 
 const CartContext = createContext();
 
@@ -48,8 +49,11 @@ export default function CartContextProvider({ children }) {
       let { data } = await axios.request(options);
       console.log("🚀 ~ addItemToCart ~ data:", data);
       await getUserCartItems();
+
+      toast.success("Item added to cart successfully");
     } catch (error) {
       console.log("🚀 ~ addItemToCart ~ error:", error);
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -66,6 +70,8 @@ export default function CartContextProvider({ children }) {
         }
       );
       await getUserCartItems();
+
+      toast.success("Item updated successfully");
     } catch (error) {
       console.log("🚀 ~ updateItem ~ error:", error);
     } finally {
@@ -83,6 +89,7 @@ export default function CartContextProvider({ children }) {
         }
       );
       await getUserCartItems();
+      toast.success("Item removed from cart");
     } catch (error) {
       console.log("🚀 ~ removeItemFromCart ~ error:", error);
     } finally {
