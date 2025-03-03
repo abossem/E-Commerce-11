@@ -1,7 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import Amazon from "../../assets/amazon.png";
 import India from "../../assets/india.png";
-import { MapPin, Search, ShoppingCart, Menu, ChevronDown } from "lucide-react";
+import {
+  MapPin,
+  Search,
+  ShoppingCart,
+  Menu,
+  ChevronDown,
+  UserRound,
+} from "lucide-react";
 import { useUserContext } from "../../context/User.context";
 import { useState } from "react";
 
@@ -20,12 +27,13 @@ export default function NavBar() {
   return (
     <>
       <section className="navbar bg-primary-dark">
-        <div className="px-4 text-primary-white  w-full">
+        <div className="px-4 text-primary-white w-full">
           <div className="head  flex items-center justify-between gap-3 lg:gap-5 lg:py-3 flex-wrap md:flex-nowrap">
             <Link to={"/"} className="logo order-first flex items-center gap-1">
               <Menu size={24} className="md:hidden" />
               <img src={Amazon} alt="Amazon Logo" />
             </Link>
+
             <div className="location md:flex  items-end  hidden">
               <MapPin size={26} strokeWidth={1} />
               <div className="cursor-pointer">
@@ -37,9 +45,10 @@ export default function NavBar() {
                 </p>
               </div>
             </div>
+
             <form
               onSubmit={onClick}
-              className="rounded-md border-none  overflow-hidden h-[50px] flex items-center justify-center grow order-last md:order-none"
+              className="max-md:w-full  rounded-md border-none  overflow-hidden h-[50px] flex items-center justify-center grow order-last md:order-none"
             >
               <select
                 name="categories"
@@ -64,6 +73,7 @@ export default function NavBar() {
                 <Search size={24} />
               </button>
             </form>
+
             <div className=" items-center  hidden md:flex ">
               <img src={India} className="w-full" alt="India Flag Image" />
               <select
@@ -79,6 +89,7 @@ export default function NavBar() {
                 </option>
               </select>
             </div>
+
             <div className="sign-in hidden md:flex flex-col items-start relative group cursor-pointer">
               <p className="font-lato font-bold">
                 Hello,{" "}
@@ -164,11 +175,16 @@ export default function NavBar() {
               <p className="capitalize font-lato font-bold">Orders</p>
             </Link>
             <Link to={"/cart"} className="cart flex items-center gap-2  ">
+              {token && <p>{userInfo?.name}</p>}
+
+              <span className={`font-lato font-bold md:hidden `}>
+                <UserRound size={30} />
+              </span>
               <ShoppingCart className="sm:w-[50px] sm:h-[50px] md:w-[20px] md:h-[20px] lg:w-[40px] lg:h-[40px]" />
-              <span className="font-lato font-bold hidden lg:flex">Cart</span>
             </Link>
           </div>
         </div>
+
         <div className=" w-full bg-secondary-dark overflow-x-auto max-sm:mt-3 ">
           <div className=" container px-4 flex items-center overflow-hidden overflow-x-scroll  md:overflow-visible md:overflow-x-visible  text-primary-white gap-1 ">
             <Link

@@ -8,11 +8,8 @@ import {
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// import "swiper/css";
-// import "swiper/css/navigation";
-// import "swiper/css/pagination";
-// import "swiper/css/scrollbar";
 import Loading from "../loading/Loading";
+import { Link } from "react-router-dom";
 
 export default function HeadingSlider({ products, isLoading }) {
   return (
@@ -43,14 +40,16 @@ export default function HeadingSlider({ products, isLoading }) {
 
         {products.map((category, i) => (
           <SwiperSlide key={i}>
-            <a href={`/Products/${category.name}`}>
+            <Link
+              to={`/products/category/${category.sub_categories.at(0).name}`}
+            >
               <img
                 src={category.sub_categories.at(0).image}
                 alt={category.sub_categories.at(0).name}
                 loading="lazy"
                 className="w-full max-h-[600px] sm:max-h-[500px] md:max-h-[600px] rounded-md shadow-md object-cover"
               />
-            </a>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

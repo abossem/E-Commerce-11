@@ -10,15 +10,12 @@ import FilteredProducts from "./Pages/FilteredProducts";
 import ProductDetails from "./pages/ProductDetails";
 import ErrorPage from "./Pages/ErrorPage";
 import Orders from "./pages/Orders/Orders";
-<<<<<<< HEAD
 import { Toaster } from "react-hot-toast";
-=======
 import UserProvider from "./context/User.context";
 import HomeContextProvider from "./context/homeContext";
 import CartContextProvider from "./context/CartContext";
 import ProductsContextProvider from "./context/ProductsContext";
 import OrderMethodPage from "./Pages/Orders/OrderMethodPage";
->>>>>>> 4db08592fec098e334dc3e840ce21b52471f1794
 
 function App() {
   const routes = createBrowserRouter([
@@ -52,10 +49,7 @@ function App() {
 
   return (
     <>
-<<<<<<< HEAD
       <Toaster position="top-right" reverseOrder={false} />
-      <RouterProvider router={routes}></RouterProvider>
-=======
       <UserProvider>
         <HomeContextProvider>
           <CartContextProvider>
@@ -65,7 +59,6 @@ function App() {
           </CartContextProvider>
         </HomeContextProvider>
       </UserProvider>
->>>>>>> 4db08592fec098e334dc3e840ce21b52471f1794
     </>
   );
 }
