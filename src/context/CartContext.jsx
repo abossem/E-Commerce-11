@@ -108,6 +108,7 @@ export default function CartContextProvider({ children }) {
         addItemToCart,
         updateItem,
         removeItemFromCart,
+        setCartItems,
       }}
     >
       {children}

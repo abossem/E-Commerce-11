@@ -6,7 +6,7 @@ import { useUserContext } from "../../context/User.context";
 
 export default function Orders() {
   const { token } = useUserContext();
-  const [orders, setOrdes] = useState(null);
+  const [orders, setOrders] = useState(null);
   // get user Orders
   async function getUserOrders() {
     try {
@@ -20,7 +20,7 @@ export default function Orders() {
       let { data } = await axios.request(options);
       console.log(Object.entries(data.data));
 
-      setOrdes(data.data);
+      setOrders(data.data);
     } catch (error) {
       console.log(error);
     }
@@ -60,9 +60,15 @@ export default function Orders() {
                       </div>
                       <div>
                         {value.status == "pending" ? (
-                          <span className="inline-block px-3 py-1 bg-lime-500 text-white font-semibold font-cairo rounded-full">
-                            pending
-                          </span>
+                          <div className="space-x-2">
+                            <span className="inline-block px-3 py-1 bg-lime-500 text-white font-semibold font-cairo rounded-full">
+                              pending
+                            </span>
+
+                            <span className="inline-block px-3 py-1 bg-red text-white font-semibold font-cairo rounded-full">
+                              delete
+                            </span>
+                          </div>
                         ) : (
                           <span className="inline-block px-3 py-1 bg-blue-500 text-white font-semibold font-cairo rounded-full">
                             Delivered

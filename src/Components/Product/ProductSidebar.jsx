@@ -5,16 +5,8 @@ import { Link } from "react-router-dom";
 
 export default function ProductSidebar() {
   const [showFilters, setShowFilters] = useState(false);
-  
-  const brands = [
-    "Apple",
-    "Dell",
-    "Sony",
-    "IKEA",
-    "Nike",
-    "Zara",
-    "MAC"
-  ];
+
+  const brands = ["Apple", "Dell", "Sony", "IKEA", "Nike", "Zara", "MAC"];
 
   const prices = [
     "All",
@@ -72,13 +64,11 @@ export default function ProductSidebar() {
             <h3 className="font-bold mb-3 text-lg">Coustomer Reviews</h3>
             {[4, 3, 2, 1].map((i) => {
               return (
-                <Link key={ i } to={`/products/rating/${i}`}>
-                <div
-                  className="flex items-center gap-2 mt-1 cursor-pointer transition-all duration-300 hover:ms-2"
-                >
-                  <StarRating rating={i} />
-                  <span className="ms-2">& up</span>
-                </div>
+                <Link key={i} to={`/products/rating/${i}`}>
+                  <div className="flex items-center gap-2 mt-1 cursor-pointer transition-all duration-300 hover:ms-2">
+                    <StarRating rating={i} />
+                    <span className="ms-2">& up</span>
+                  </div>
                 </Link>
               );
             })}
@@ -87,38 +77,35 @@ export default function ProductSidebar() {
             <h3 className="font-bold mb-1 text-lg">Brands</h3>
             {brands.map((brand, i) => {
               return (
-                <Link key={ brand } to={`/products/brand/${brand}`}>
-                <div
-                  className="flex items-center gap-2 mt-1"
-                >
-                  <input type="radio" name="brand" id={"b" + i} />
-                  <label
-                    htmlFor={"b" + i}
-                    className="cursor-pointer hover:text-[#c45500]"
-                  >
-                    {brand}
-                  </label>
-                </div>
+                <Link key={brand} to={`/products/brand/${brand}`}>
+                  <div className="flex items-center gap-2 mt-1">
+                    <input type="radio" name="brand" id={"b" + i} />
+                    <label
+                      htmlFor={"b" + i}
+                      className="cursor-pointer hover:text-[#c45500]"
+                    >
+                      {brand}
+                    </label>
+                  </div>
                 </Link>
               );
             })}
           </div>
           <div className="Price mt-8">
             <h3 className="font-bold mb-1 text-lg">Price</h3>
-            { prices.map( ( p, i ) =>
-            {
-              p = p.replace( ' to ', '-' );
-              p = p.replace( /\$/g, '' );
+            {prices.map((p, i) => {
+              p = p.replace(" to ", "-");
+              p = p.replace(/\$/g, "");
               return (
-                <Link key={ p } to={ `/products/price/${ p }` }>
-                <div className="flex items-center gap-2 mt-1">
-                  <input type="radio" name="price" id={"p-" + i} />
-                  <label
-                    htmlFor={"p-" + i}
-                    className="cursor-pointer hover:text-[#c45500]"
-                  >
-                    {p}
-                  </label>
+                <Link key={p} to={`/products/price/${p}`}>
+                  <div className="flex items-center gap-2 mt-1">
+                    <input type="radio" name="price" id={"p-" + i} />
+                    <label
+                      htmlFor={"p-" + i}
+                      className="cursor-pointer hover:text-[#c45500]"
+                    >
+                      {p}
+                    </label>
                   </div>
                 </Link>
               );
