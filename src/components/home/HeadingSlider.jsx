@@ -9,6 +9,14 @@ import {
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Loading from "../loading/Loading";
+<<<<<<< HEAD
+=======
+
+// import "swiper/css";
+// import "swiper/css/navigation";
+// import "swiper/css/pagination";
+// import "swiper/css/scrollbar";
+>>>>>>> 93d19dda641af2b7f17ceebb97536327c91fa4a6
 
 export default function HeadingSlider({ products, isLoading }) {
   return (
@@ -39,8 +47,13 @@ export default function HeadingSlider({ products, isLoading }) {
 
         {products.map((category, i) => (
           <SwiperSlide key={i}>
+<<<<<<< HEAD
             <Link
               to={`/products/category/${category.sub_categories.at(0).name}`}
+=======
+            <a
+              href={`/products/category/${category.sub_categories.at(0).name}`}
+>>>>>>> 93d19dda641af2b7f17ceebb97536327c91fa4a6
             >
               <img
                 src={category.sub_categories.at(0).image}

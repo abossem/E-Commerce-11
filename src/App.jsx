@@ -15,6 +15,10 @@ import HomeContextProvider from "./context/homeContext";
 import CartContextProvider from "./context/CartContext";
 import ProductsContextProvider from "./context/ProductsContext";
 import OrderMethodPage from "./Pages/Orders/OrderMethodPage";
+<<<<<<< HEAD
+=======
+import { Toaster } from "react-hot-toast";
+>>>>>>> 93d19dda641af2b7f17ceebb97536327c91fa4a6
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 function App() {
